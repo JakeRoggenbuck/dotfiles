@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 " Code
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'junegunn/fzf.vim'
 Plug 'jakeroggenbuck/vim-snow-script-syntax'
 Plug 'jakeroggenbuck/vim-impulse-syntax'
@@ -101,6 +101,7 @@ let g:choosewin_overlay_enable = 1
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 
+let g:tex_flavor = 'latex'
 let g:vimtex_view_general_viewer = "zathura"
 
 " Exit terminal mode
