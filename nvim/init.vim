@@ -25,13 +25,13 @@ Plug 'xolox/vim-notes'
 
 " Themes
 Plug 'morhetz/gruvbox'
-"Plug 'baskerville/bubblegum'
-"Plug 'mhartington/oceanic-next'
+Plug 'baskerville/bubblegum'
+Plug 'mhartington/oceanic-next'
 Plug 'cocopon/iceberg.vim'
-"Plug 'drewtempelmeyer/palenight.vim'
-"Plug 'roosta/srcery'
-"Plug 'joshdick/onedark.vim'
-"Plug 'ajh17/spacegray.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'roosta/srcery'
+Plug 'joshdick/onedark.vim'
+Plug 'ajh17/spacegray.vim'
 
 " Appearance
 Plug 'vim-airline/vim-airline'
