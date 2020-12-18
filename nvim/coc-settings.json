@@ -1,0 +1,8 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "codeLens.enable": true,
+    "python.formatting.blackPath": "/home/jake/.local/bin/black",
+    "python.formatting.blackArgs": ["-l", "100", "-S"],
+    "python.formatting.provider": "black",
+    "yaml.format.enable": false
+}
