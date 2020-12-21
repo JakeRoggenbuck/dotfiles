@@ -106,12 +106,43 @@ Plug 'jakeroggenbuck/vimage.vim'
 
 call plug#end()
 
+let s:config_url = "https://raw.githubusercontent.com/JakeRoggenbuck/dotfiles/master/nvim/init.vim"
+let s:config_path = "/home/jake/.config/nvim/init.vim"
 
+" Downloads newest version of my config from github
+func! g:ConfigUpdate()
+py3 << EOF
+import requests
+import vim
+config_url = vim.eval("s:config_url")
+config_path = vim.eval("s:config_path")
+
+result = requests.get(config_url)
+with open(config_path, "w") as file:
+    file.write(result.text)
+print("Updated!")
+EOF
+endfunc
+
+nnoremap <leader>cu :call ConfigUpdate()<CR>
+
+" Chill out if I am feeling chill
+let s:chill = 0
+
+func! IsChilling()
+    if s:chill
+        let s:chill = 0
+        colorscheme iceberg
+    else
+        let s:chill = 1
+        colorscheme gruvbox
+    endif
+endfunc
+
+call g:IsChilling()
 
 let mapleader =","
 set relativenumber
-
-
 
 " Coc stuff
 "
@@ -136,8 +167,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-
 
 " Spelling
 "
@@ -214,8 +243,6 @@ nmap <silent> <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Some cool symbols for notes
 let g:notes_list_bullets = ['•', '◦', '▸', '▹', '▪', '▫']
 
-
-
 " Git fugitive
 "
 nmap <leader>gf :GFiles<CR>
@@ -229,8 +256,6 @@ nmap <leader>gs :G<CR>
 " Merge conflicts
 nmap <leader>gdj :diffget //3<CR>
 nmap <leader>gdf :diffget //2<CR>
-
-
 
 " Window and buffer stuff
 "
@@ -276,7 +301,6 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
-
 
 " If I switch back to dvorak layout while using vim, maybe ;)
 "set langmap='q,\\,w,.e,pr,yt,fy,gu,ci,ro,lp,/[,=],aa,os,ed,uf,ig,dh,hj,tk,nl,s\\;,-',\\;z,qx,jc,kv,xb,bn,mm,w\\,,v.,z/,[-,]=,\"Q,<W,>E,PR,YT,FY,GU,CI,RO,LP,?{,+},AA,OS,ED,UF,IG,DH,HJ,TK,NL,S:,_\",:Z,QX,JC,KV,XB,BN,MM,W<,V>,Z?
