@@ -21,6 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jakeroggenbuck/vim-snow-script-syntax'
 Plug 'jakeroggenbuck/vim-impulse-syntax'
 Plug 'jakeroggenbuck/planck.vim'
+Plug 'vim-crystal/vim-crystal'
 
 " Really helpful for code golf and other implementations with lots or
 " parentheses, this highlights them to distinguishes which match up
@@ -31,6 +32,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'kien/ctrlp.vim'
 " A great way to navigate directories looking for files
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 
 " A way to find function definitions in you current file, pretty helpful
 " This plugin might be broken, or at least does not work on my machines
@@ -62,12 +64,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Shows the commit hash, and title when <leader>b is pressed
 Plug 'zivyangll/git-blame.vim'
+Plug 'APZelos/blamer.nvim'
 
 " Organization
 " This is the coolest thing, in combination with other plugins, is ideal for
 " taking notes in class or just reminders
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+
+" 'Quickly writeup and save drafts for messaging apps in your favorite editor'
+" - draft.vim
+Plug 'jakeroggenbuck/draft.vim'
 
 " Themes
 " My main theme
@@ -141,6 +148,21 @@ endfunc
 
 call g:IsChilling()
 
+
+" This is pretty interesting if you need to see all the colors that vim can
+" use. This is helpful when making or fixing vim color themes or plugins that
+" deal with colors. Will add ctermfg=232COLOR in every color
+func! g:Colors()
+	let num = 255
+	while num >= 0
+		exec 'hi col_'.num.' ctermfg='.num
+		exec 'syn match col_'.num.' "ctermfg='.num.'COLOR" containedIn=ALL'
+		call append(0, 'ctermfg='.num.'COLOR')
+		let num = num - 1
+	endwhile
+endfunc
+
+
 let mapleader =","
 set relativenumber
 
@@ -179,6 +201,7 @@ set encoding=UTF-8
 set history=1000
 set undolevels=1000
 
+
 " set colorscheme
 colorscheme gruvbox
 
@@ -204,6 +227,21 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']']]
 " Vimtex settings
 let g:tex_flavor = 'latex'
 let g:vimtex_view_general_viewer = "zathura"
+
+" Inspired by a one liner Kevin made with the same purpose of viewing github
+" markdown files with one command
+func! ViewGithubMarkdown()
+	let name = expand('%:r')
+	execute ":!command pandoc '" . expand('%:p') . "' --from=gfm --pdf-engine=wkhtmltopdf --output " . name . ".pdf"
+	execute ":!command zathura '" . name . ".pdf'"
+endfunc
+
+nmap <leader>ghp :call ViewGithubMarkdown()<CR>
+
+" Keybinds for the plugin drafts.vim
+let g:drafts_directory = "/home/jake/Library/drafts/"
+nnoremap <Leader>nd :call NewDraft()<CR>
+nnoremap <Leader>ld :call ListDrafts()<CR>
 
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -286,7 +324,7 @@ nnoremap <silent> <leader><C-j> :call WinMove('j')<cr>
 nnoremap <silent> <leader><C-k> :call WinMove('k')<cr>
 nnoremap <silent> <leader><C-l> :call WinMove('l')<cr>
 
-nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+nnoremap <Leader>B :<C-u>call gitblame#echo()<CR>
 
 " Move windows like window manager
 function! WinMove(key)
