@@ -48,6 +48,12 @@ Plug 'vim-crystal/vim-crystal'
 " Amazing for commenting code, you don't know you need this until you have it
 Plug 'tpope/vim-commentary'
 
+" Search better
+Plug 'google/vim-searchindex'
+
+" Syntax for sxhkd
+Plug 'baskerville/vim-sxhkdrc'
+
 " For fun ;)
 Plug 'jakeroggenbuck/vim-game-snake'
 
@@ -56,6 +62,9 @@ Plug 'jakeroggenbuck/vim-game-snake'
 Plug 'nvie/vim-flake8'
 " For python, it's got it all
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+" Pytest for vim
+Plug 'alfredodeza/pytest.vim'
 
 " Git
 " Really helpful for using git with vim, it has all the needed stuff
@@ -75,6 +84,9 @@ Plug 'xolox/vim-notes'
 " 'Quickly writeup and save drafts for messaging apps in your favorite editor'
 " - draft.vim
 Plug 'jakeroggenbuck/draft.vim'
+
+" Wrting
+Plug 'reedes/vim-wordy'
 
 " Themes
 " My main theme
@@ -104,8 +116,6 @@ Plug 'justinmk/vim-sneak'
 Plug 't9md/vim-choosewin'
 
 " Misc
-" Plug 'jakeroggenbuck/vim-character-creator'
-" Plug 'jakeroggenbuck/vim-selection-test'
 " Super great for making nice looking README files and other markdown files
 Plug 'dhruvasagar/vim-table-mode'
 " Something for opening file paths in an image viewer
