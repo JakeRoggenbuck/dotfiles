@@ -11,7 +11,6 @@
 " 	of these plugins and keybinds
 
 
-
 " Plugins
 "
 call plug#begin('~/.vim/plugged')
@@ -108,6 +107,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Great for it's intended purpose of distraction free mode, also great for
 " taking screenshots of code
 Plug 'junegunn/goyo.vim'
+
+" Add hex colors
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Navigation UI
 " Can navigate to different parts of the code
@@ -334,7 +336,31 @@ nnoremap <silent> <leader><C-j> :call WinMove('j')<cr>
 nnoremap <silent> <leader><C-k> :call WinMove('k')<cr>
 nnoremap <silent> <leader><C-l> :call WinMove('l')<cr>
 
+" Git blame, at bottom
 nnoremap <Leader>B :<C-u>call gitblame#echo()<CR>
+
+" Highlighting of hex colors
+" Test color #21a6f6
+let g:highlightinghex = 0
+" Plugin needs to be setup, then turned off
+call hexokinase#v2#setup()
+call hexokinase#v2#scraper#off()
+
+" Toggle hex highlighting and other setting for the highlighting
+func! g:HighlightingHexToggle()
+	if g:highlightinghex == 0
+		let g:Hexokinase_highlighters = ['sign_column']
+		set termguicolors
+		call hexokinase#v2#scraper#on()
+		let g:highlightinghex = 1
+
+	elseif g:highlightinghex == 1
+		let g:Hexokinase_highlighters = []
+		set termguicolors&
+		call hexokinase#v2#scraper#off()
+		let g:highlightinghex = 0
+	endif
+endfunc
 
 " Move windows like window manager
 function! WinMove(key)
