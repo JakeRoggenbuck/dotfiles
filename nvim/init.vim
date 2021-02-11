@@ -22,6 +22,13 @@ Plug 'jakeroggenbuck/vim-impulse-syntax'
 Plug 'jakeroggenbuck/planck.vim'
 Plug 'vim-crystal/vim-crystal'
 
+" Go!
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Really helpful for code golf and other implementations with lots or
 " parentheses, this highlights them to distinguishes which match up
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -52,6 +59,9 @@ Plug 'google/vim-searchindex'
 
 " Syntax for sxhkd
 Plug 'baskerville/vim-sxhkdrc'
+
+" For C++
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " For fun ;)
 Plug 'jakeroggenbuck/vim-game-snake'
@@ -249,6 +259,15 @@ func! ViewGithubMarkdown()
 endfunc
 
 nmap <leader>ghp :call ViewGithubMarkdown()<CR>
+
+" Code snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 
 " Keybinds for the plugin drafts.vim
 let g:drafts_directory = "/home/jake/Library/drafts/"
