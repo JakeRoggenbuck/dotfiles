@@ -1,6 +1,9 @@
 # ~/.bashrc
 
-bash_startup
+cheat_sheet_startup print
+(cheat_sheet_startup pull &)
+
+bash_startup_cpp
 
 HISTSIZE=100000
 HISTFILESIZE=200000
