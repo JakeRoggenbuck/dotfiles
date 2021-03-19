@@ -144,6 +144,23 @@ alias pullm='git pull upstream $(git symbolic-ref refs/remotes/origin/HEAD | sed
 # pull current branch from upstream
 alias pullu='git pull upstream $(git symbolic-ref --short HEAD)'
 
+# any
+alias a='fasd -a'
+# show / search / select
+alias s='fasd -si'
+# directory
+alias d='fasd -d'
+# file
+alias f='fasd -f'
+# interactive directory selection
+alias sd='fasd -sid'
+# interactive file selection
+alias sf='fasd -sif'
+# cd, same functionality as j in autojump
+alias z='fasd_cd -d'
+# cd with interactive selection
+alias zz='fasd_cd -d -i'
+
 # show very short git log, commit hash first six, and commit message
 alias gls='git log --pretty=oneline --abbrev-commit'
 # show cool graph of git log
@@ -188,10 +205,19 @@ start_ruby () {
 	eval "$(rbenv init -)"
 }
 
+start_fasd () {
+	eval "$(fasd --init auto)"
+}
+
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]
 then
 	start_ruby
+fi
+
+if [ $(2>/dev/null 1>/dev/null which fasd &) ]
+then
+	start_fasd
 fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
