@@ -1,9 +1,27 @@
 # ~/.bashrc
 
-cheat_sheet_startup print
-(cheat_sheet_startup pull &)
+start_cheat_sheet () {
+	cheat_sheet_startup print
+	(cheat_sheet_startup pull &)
+}
 
-bash_startup_cpp
+start_alias_show () {
+	bash_startup_cpp
+}
+
+if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]
+then
+	start_cheat_sheet
+else
+	echo "Install cheat_sheet_startup and add it to your PATH"
+fi
+
+if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]
+then
+	start_alias_show
+else
+	echo "Install bash_startup_cpp and add it to your PATH"
+fi
 
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -66,6 +84,9 @@ alias btree="exa -T --level 2"
 alias lt='ls --human-readable --size -1 -S --classify'
 # list files by last edited
 alias lastt='ls -t1l'
+
+# color highlight of diff by default
+alias diff='diff --color=auto'
 
 # nvim command
 alias v='nvim'
@@ -140,23 +161,6 @@ alias vos="sox -t pulseaudio default -t pulseaudio null pitch -200 rate -v -L -b
 # update the dotfiles
 alias dotup="cd ~/Repos/ConfigFiles/; python ../dot_drop/main.py"
 
-function ckpull () {
-    if [[ "$1" =~ ^[0-9]+$ ]]; then
-	git fetch upstream pull/"$1"/head && git checkout FETCH_HEAD
-    else
-	if [ -n "$2" ]; then
-	    if [[ "$2" =~ ^[0-9]+$ ]]; then
-		git fetch "$1" pull/"$2"/head && git checkout FETCH_HEAD
-	    else
-		echo "To specify a branch and a PR, do branch first, then PR #"
-	    fi
-	else
-	    echo "Specify PR and branch name"
-	fi
-    fi
-}
-
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
     echo -en "\e]P82B2B2B" #darkgrey
@@ -176,6 +180,18 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PFFFFFFF" #white
     clear #for background artifacting
 fi
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(rbenv init -)"
+
+start_ruby () {
+	eval "$(rbenv init -)"
+}
+
+# Start ruby env if the command exists
+if [ $(2>/dev/null 1>/dev/null which rbenv &) ]
+then
+	start_ruby
+fi
+
+2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
