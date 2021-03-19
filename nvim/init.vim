@@ -22,9 +22,6 @@ Plug 'jakeroggenbuck/vim-impulse-syntax'
 Plug 'jakeroggenbuck/planck.vim'
 Plug 'vim-crystal/vim-crystal'
 
-" Go!
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -92,7 +89,7 @@ Plug 'xolox/vim-notes'
 
 " 'Quickly writeup and save drafts for messaging apps in your favorite editor'
 " - draft.vim
-Plug 'jakeroggenbuck/draft.vim'
+Plug 'jakeroggenbuck/draft.vim', {'branch': 'nightly'}
 
 " Wrting
 Plug 'reedes/vim-wordy'
@@ -273,6 +270,7 @@ let g:UltiSnipsEditSplit="vertical"
 let g:drafts_directory = "/home/jake/Library/drafts/"
 nnoremap <Leader>nd :call NewDraft()<CR>
 nnoremap <Leader>ld :call ListDrafts()<CR>
+nnoremap <Leader>z :call OpenDrafts()<CR>
 
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
