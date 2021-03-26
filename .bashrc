@@ -26,10 +26,12 @@ git_color () {
 	# Inspired by function from https://github.com/jishnusen/dots
 	local git_status="`git status 2>&1`"
 	if [[ ! "$git_status" =~ not\ a\ git\ repo ]]; then
-		if [[ ! "$git_status" =~ Changes\ not\ staged\ for\ commit ]]; then
-			local color='\033[1;34m'
-		else
+		if [[ "$git_status" =~ Changes\ not\ staged\ for\ commit ]]; then
 			local color='\033[1;31m'
+		elif [[ "$git_status" =~ Changes\ to\ be\ committed ]]; then
+			local color='\033[1;33m'
+		else
+			local color='\033[1;34m'
 		fi
 		echo -e $color
 	fi
