@@ -9,15 +9,13 @@ start_alias_show () {
 	bash_startup_cpp
 }
 
-if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]
-then
+if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
 	start_cheat_sheet
 else
 	echo "Install cheat_sheet_startup and add it to your PATH"
 fi
 
-if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]
-then
+if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]; then
 	start_alias_show
 else
 	echo "Install bash_startup_cpp and add it to your PATH"
@@ -29,17 +27,28 @@ HISTFILESIZE=200000
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [[ ${EUID} == 0 ]] ; then
-        PS1='\[\e[01;34m\]\W\[\e[m\]$(__git_ps1) \[\e[01;32m\]▲\[\e[m\] '
+if [[ ${EUID} == 0 ]]; then
+    PS1='\[\e[00;00m\]\W\[\e[01;34m\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-        PS1='\[\e[00;00m\]\W\[\e[01;34m\]$(__git_ps1) \[\e[01;32m\]▲\[\e[m\] '
+    PS1='\[\e[00;00m\]\W\[\e[01;34m\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+fi
+
+SCRIPTS="/home/jake/.scripts/"
+WALLPAPER="/home/jake/.config/wallpaper"
+
+if [[ ! -d $SCRIPTS ]]; then
+    echo "$SCRIPTS doesn't exist"
+	echo "set the var to it's actual location if it does exist"
 fi
 
 # Git auto complete
-source ~/.scripts/git-completion
+source $SCRIPTS/git-completion
 
 # Git promt config
-source ~/.scripts/git-prompt
+source $SCRIPTS/git-prompt
+
+# append to the history file, don't overwrite it
+shopt -s histappend
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -135,15 +144,6 @@ alias gstat='git status'
 # switch to another branch
 alias gswitch='git switch -c'
 
-# push current branch to origin
-alias pusho='git push origin $(git symbolic-ref --short HEAD)'
-# pull curent branch from origin
-alias pullo='git pull origin $(git symbolic-ref --short HEAD)'
-# pull current default branch
-alias pullm='git pull upstream $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
-# pull current branch from upstream
-alias pullu='git pull upstream $(git symbolic-ref --short HEAD)'
-
 # any
 alias a='fasd -a'
 # show / search / select
@@ -160,6 +160,15 @@ alias sf='fasd -sif'
 alias z='fasd_cd -d'
 # cd with interactive selection
 alias zz='fasd_cd -d -i'
+
+# push current branch to origin
+alias pusho='git push origin $(git symbolic-ref --short HEAD)'
+# pull curent branch from origin
+alias pullo='git pull origin $(git symbolic-ref --short HEAD)'
+# pull current default branch
+alias pullm='git pull upstream $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
+# pull current branch from upstream
+alias pullu='git pull upstream $(git symbolic-ref --short HEAD)'
 
 # show very short git log, commit hash first six, and commit message
 alias gls='git log --pretty=oneline --abbrev-commit'
@@ -210,13 +219,11 @@ start_fasd () {
 }
 
 # Start ruby env if the command exists
-if [ $(2>/dev/null 1>/dev/null which rbenv &) ]
-then
+if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
 	start_ruby
 fi
 
-if [ $(2>/dev/null 1>/dev/null which fasd &) ]
-then
+if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 	start_fasd
 fi
 
