@@ -9,6 +9,7 @@ start_alias_show () {
 	bash_startup_cpp
 }
 
+
 if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
 	start_cheat_sheet
 else
@@ -21,6 +22,19 @@ else
 	echo "Install bash_startup_cpp and add it to your PATH"
 fi
 
+git_color () {
+	# Inspired by function from https://github.com/jishnusen/dots
+	local git_status="`git status 2>&1`"
+	if [[ ! "$git_status" =~ not\ a\ git\ repo ]]; then
+		if [[ ! "$git_status" =~ Changes\ not\ staged\ for\ commit ]]; then
+			local color='\033[1;34m'
+		else
+			local color='\033[1;31m'
+		fi
+		echo -e $color
+	fi
+}
+
 HISTSIZE=100000
 HISTFILESIZE=200000
 
@@ -28,9 +42,9 @@ HISTFILESIZE=200000
 [[ $- != *i* ]] && return
 
 if [[ ${EUID} == 0 ]]; then
-    PS1='\[\e[00;00m\]\W\[\e[01;34m\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
+	PS1='\[\e[00;00m\]\W$(git_color)$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-    PS1='\[\e[00;00m\]\W\[\e[01;34m\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+	PS1='\[\e[00;00m\]\W$(git_color)$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
 fi
 
 SCRIPTS="/home/jake/.scripts/"
