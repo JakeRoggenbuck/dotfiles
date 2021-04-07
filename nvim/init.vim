@@ -20,6 +20,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jakeroggenbuck/vim-snow-script-syntax'
 Plug 'jakeroggenbuck/vim-impulse-syntax'
 Plug 'jakeroggenbuck/planck.vim'
+
+Plug 'jakeroggenbuck/zflat.vim'
+
 Plug 'vim-crystal/vim-crystal'
 
 " Snippets
@@ -89,7 +92,7 @@ Plug 'xolox/vim-notes'
 
 " 'Quickly writeup and save drafts for messaging apps in your favorite editor'
 " - draft.vim
-Plug 'jakeroggenbuck/draft.vim', {'branch': 'nightly'}
+Plug 'jakeroggenbuck/draft.vim', {'branch': 'add-dragon'}
 
 " Wrting
 Plug 'reedes/vim-wordy'
@@ -145,7 +148,7 @@ config_path = vim.eval("s:config_path")
 
 result = requests.get(config_url)
 with open(config_path, "w") as file:
-    file.write(result.text)
+	file.write(result.text)
 print("Updated!")
 EOF
 endfunc
@@ -156,13 +159,13 @@ nnoremap <leader>cu :call ConfigUpdate()<CR>
 let s:chill = 0
 
 func! IsChilling()
-    if s:chill
-        let s:chill = 0
-        colorscheme iceberg
-    else
-        let s:chill = 1
-        colorscheme gruvbox
-    endif
+	if s:chill
+		let s:chill = 0
+		colorscheme iceberg
+	else
+		let s:chill = 1
+		colorscheme gruvbox
+	endif
 endfunc
 
 call g:IsChilling()
@@ -196,6 +199,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 " Use tab to navigate completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+set hidden
 
 " Rename symbols
 map <leader>n <Plug>(coc-rename)
@@ -381,16 +386,16 @@ endfunc
 
 " Move windows like window manager
 function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-    if (match(a:key,'[jk]'))
-      wincmd v
-    else
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
+	let t:curwin = winnr()
+	exec "wincmd ".a:key
+	if (t:curwin == winnr())
+		if (match(a:key,'[jk]'))
+			wincmd v
+		else
+			wincmd s
+		endif
+		exec "wincmd ".a:key
+	endif
 endfunction
 
 " If I switch back to dvorak layout while using vim, maybe ;)
