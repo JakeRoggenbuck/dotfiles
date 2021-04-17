@@ -127,6 +127,8 @@ Plug 'justinmk/vim-sneak'
 " Pretty cool to get around if you have lots of tabs or windows open
 Plug 't9md/vim-choosewin'
 
+Plug 'kshenoy/vim-signature'
+
 " Misc
 " Super great for making nice looking README files and other markdown files
 Plug 'dhruvasagar/vim-table-mode'
@@ -186,7 +188,7 @@ endfunc
 
 
 let mapleader =","
-set relativenumber
+set number relativenumber
 
 " Coc stuff
 "
