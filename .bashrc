@@ -177,6 +177,14 @@ alias z='fasd_cd -d'
 # cd with interactive selection
 alias zz='fasd_cd -d -i'
 
+# A cat(1) clone with wings.
+alias b='bat'
+# Bat without line numbers or decorators
+alias bp='bat -p'
+
+# Hex viewer
+alias x='hexyl'
+
 # push current branch to origin
 alias pusho='git push origin $(git symbolic-ref --short HEAD)'
 # pull curent branch from origin
@@ -234,6 +242,8 @@ start_fasd () {
 	eval "$(fasd --init auto)"
 }
 
+eval "$(starship init bash)"
+
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
 	start_ruby
@@ -244,3 +254,4 @@ if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
+source "$HOME/.cargo/env"

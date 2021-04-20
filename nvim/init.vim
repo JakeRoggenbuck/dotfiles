@@ -22,7 +22,6 @@ Plug 'jakeroggenbuck/vim-impulse-syntax'
 Plug 'jakeroggenbuck/planck.vim'
 
 Plug 'jakeroggenbuck/zflat.vim'
-
 Plug 'vim-crystal/vim-crystal'
 
 " Snippets
@@ -83,6 +82,7 @@ Plug 'airblade/vim-gitgutter'
 " Shows the commit hash, and title when <leader>b is pressed
 Plug 'zivyangll/git-blame.vim'
 Plug 'APZelos/blamer.nvim'
+Plug 'rhysd/git-messenger.vim'
 
 " Organization
 " This is the coolest thing, in combination with other plugins, is ideal for
