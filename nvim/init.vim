@@ -96,6 +96,10 @@ Plug 'jakeroggenbuck/draft.vim', {'branch': 'add-dragon'}
 
 " Wrting
 Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-pencil'
+Plug 'dbmrq/vim-ditto'
+Plug 'preservim/vim-lexical'
+Plug 'preservim/vim-textobj-sentence'
 
 " Themes
 " My main theme
@@ -272,6 +276,18 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" Jump to the next word
+nmap =d <Plug>DittoNext
+" Jump to the previous word
+nmap -d <Plug>DittoPrev
+" Ignore the word under the cursor
+nmap +d <Plug>DittoGood
+" Stop ignoring the word under the cursor
+nmap _d <Plug>DittoBad
+" Show the next matches
+nmap ]d <Plug>DittoMore
+" Show the previous matches
+nmap [d <Plug>DittoLess
 
 " Keybinds for the plugin drafts.vim
 let g:drafts_directory = "/home/jake/Library/drafts/"
@@ -302,6 +318,14 @@ autocmd FileType python map <leader>lm :call flake8#Flake8()<CR>
 
 " Calcurse md format
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes* set filetype=markdown
+
+" Change color of spelling error
+autocmd ColorScheme * hi SpellBad cterm=Underline ctermfg=203
+
+" Turn on Ditto's autocmds
+au FileType markdown,text,tex DittoOn
+" Turn Ditto on and off
+nmap <leader>di <Plug>ToggleDitto
 
 " Toggle search highlighting
 nmap <silent> <leader>/ :set hlsearch!<cr>
