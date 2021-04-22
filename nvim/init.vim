@@ -74,6 +74,8 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Pytest for vim
 Plug 'alfredodeza/pytest.vim'
 
+Plug 'RRethy/vim-illuminate'
+
 " Git
 " Really helpful for using git with vim, it has all the needed stuff
 Plug 'tpope/vim-fugitive'
@@ -93,6 +95,7 @@ Plug 'xolox/vim-notes'
 " 'Quickly writeup and save drafts for messaging apps in your favorite editor'
 " - draft.vim
 Plug 'jakeroggenbuck/draft.vim', {'branch': 'add-dragon'}
+Plug 'jakeroggenbuck/journal.vim'
 
 " Wrting
 Plug 'reedes/vim-wordy'
@@ -231,6 +234,8 @@ set encoding=UTF-8
 set history=1000
 set undolevels=1000
 
+" Don't highlight word under cursor (default: 1)
+let g:Illuminate_highlightUnderCursor = 0
 
 " set colorscheme
 colorscheme gruvbox
@@ -294,6 +299,8 @@ let g:drafts_directory = "/home/jake/Library/drafts/"
 nnoremap <Leader>nd :call NewDraft()<CR>
 nnoremap <Leader>ld :call ListDrafts()<CR>
 nnoremap <Leader>z :call OpenDrafts()<CR>
+
+let g:journals_directory = "/home/jake/Library/journal"
 
 " Exit terminal mode
 tnoremap <Esc> <C-\><C-n>
