@@ -23,6 +23,7 @@ Plug 'jakeroggenbuck/planck.vim'
 
 Plug 'jakeroggenbuck/zflat.vim'
 Plug 'vim-crystal/vim-crystal'
+Plug 'rust-lang/rust.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -234,9 +235,6 @@ set encoding=UTF-8
 set history=1000
 set undolevels=1000
 
-" Don't highlight word under cursor (default: 1)
-let g:Illuminate_highlightUnderCursor = 0
-
 " set colorscheme
 colorscheme gruvbox
 
@@ -416,6 +414,10 @@ func! g:HighlightingHexToggle()
 		let g:highlightinghex = 0
 	endif
 endfunc
+
+let g:Illuminate_highlightUnderCursor = 0
+" Starts disabled, can be turned on manually when needed
+call g:illuminate#disable_illumination(0)
 
 " Move windows like window manager
 function! WinMove(key)
