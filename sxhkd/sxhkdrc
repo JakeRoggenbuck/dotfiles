@@ -30,7 +30,7 @@ super + shift + p
 	firefox
 
 super + alt + l
-	bash .scripts/$(echo -e "bye\nblur-lock" | dmenu  -p "Lock")
+	bash $SCRIPTS/$(echo -e "bye\nblur-lock" | dmenu  -p "Lock")
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -53,13 +53,12 @@ F1
 	amixer set Master 0%
 
 F2
-	amixer set Master 5%-
+	bash $SCRIPTS/audio down
 
 F3
-	amixer set Master 5%+
+	bash $SCRIPTS/audio up
 
 #backlight
-
 F11
 	xbacklight -dec 5
 
@@ -70,7 +69,7 @@ F12
 
 # dvorak / us
 super + alt + d
-	bash .scripts/$(echo -e "us\ndvorak" | dmenu -p "Keyboard")keyboard
+	bash $SCRIPTS/keyboard $(echo -e "us\ndvorak" | dmenu -p "Keyboard")
 
 # bspwm hotkeys
 
