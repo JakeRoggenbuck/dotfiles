@@ -242,7 +242,9 @@ start_fasd () {
 	eval "$(fasd --init auto)"
 }
 
-eval "$(starship init bash)"
+start_starship() {
+	eval "$(starship init bash)"
+}
 
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
@@ -251,6 +253,10 @@ fi
 
 if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 	start_fasd
+fi
+
+if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
+	start_starship
 fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
