@@ -1,0 +1,389 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #dd1d1f21
+background-solid = #1d1f21
+background-alt = #3B4252
+foreground = #bdc3c7
+foreground-alt = #bdc3c7
+
+primary = #0097e6
+secondary = #2980b9
+alert = #c0392b
+
+danger-red = #5b1819
+light-blue = #3498db
+dark-blue = #2a648c
+light-red = #e74c3c
+dark-red = #9e362a
+light-green = #2ecc71
+dark-green = #368e5b
+
+nord-purple = #ecf0f1
+
+[bar/example]
+width = 100%
+height = 24
+radius = 0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 2
+border-color = ${colors.background-solid}
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = monospace:pixelsize=8;1
+font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid":pixelsize=8;1
+font-2 = "Font Awesome 5 Regular,Font Awesome 5 Brands Regular:style=Regular":pixelsize=8;1
+
+modules-left = bspwm memory cpu temperature wlan
+modules-center =
+modules-right = date backlight pulseaudio battery powermenu
+tray-position = right
+tray-padding = 0
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = ""
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.light-red}
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.light-blue}
+label-focused-padding = 4
+
+label-occupied = %index%
+label-occupied-padding = 4
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 4
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 4
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 4
+label-mode-foreground = #000
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-default = 
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-foreground = ${colors.foreground}
+label-focused-underline= ${colors.foreground}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+; Separator in between workspaces
+label-separator =
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+
+format = <ramp>
+format-prefix = "BL: " 
+format-prefix-foreground = ${colors.light-blue}
+
+ramp-0 = [|          ]
+ramp-1 = [||         ]
+ramp-2 = [|||        ]
+ramp-3 = [||||       ]
+ramp-4 = [|||||      ]
+ramp-5 = [||||||     ]
+ramp-6 = [|||||||    ]
+ramp-7 = [||||||||   ]
+ramp-8 = [|||||||||  ]
+ramp-9 = [|||||||||| ]
+ramp-10 = [|||||||||||]
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU: "
+format-prefix-foreground = ${colors.light-blue}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "MEM: "
+format-prefix-foreground = ${colors.light-blue}
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = enp0s31f6
+
+ramp-signal-0 = .
+ramp-signal-1 = :
+ramp-signal-2 = |
+ramp-signal-3 = }
+ramp-signal-4 = #
+
+ramp-signal-0-foreground = ${colors.light-red}
+ramp-signal-1-foreground = ${colors.light-red}
+ramp-signal-2-foreground = ${colors.light-green}
+ramp-signal-3-foreground = ${colors.light-green}
+ramp-signal-4-foreground = ${colors.light-green}
+
+format-connected = <ramp-signal> <label-connected>
+format-disconnected = <label-disconnected>
+
+format-connected-prefix = "NET: "
+format-connected-prefix-foreground = ${colors.light-blue}
+label-connected =  %upspeed%  %downspeed%
+
+format-disconnected-prefix = "NET: "
+format-disconnected-prefix-foreground = ${colors.light-blue}
+label-disconnected = (not connected)
+label-disconnected-foreground = ${colors.light-red}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%A"
+date-alt = "%Y/%m/%d"
+
+time = %H:%M:%S
+time-alt = %H:%M:%S
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume>
+format-volume-prefix = "VOL: "
+format-volume-prefix-foreground = ${colors.light-blue}
+
+
+label-muted = [audio muted]
+label-muted-foreground = #666
+
+ramp-volume-0 = [|          ]
+ramp-volume-1 = [||         ]
+ramp-volume-2 = [|||        ]
+ramp-volume-3 = [||||       ]
+ramp-volume-4 = [|||||      ]
+ramp-volume-5 = [||||||     ]
+ramp-volume-6 = [|||||||    ]
+ramp-volume-7 = [||||||||   ]
+ramp-volume-8 = [|||||||||  ]
+ramp-volume-9 = [|||||||||| ]
+ramp-volume-10 = [|||||||||||]
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "M "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = x
+bar-volume-fill-font = 2
+bar-volume-empty = o
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 98
+
+format-charging = <label-charging> <ramp-capacity>
+
+format-discharging = <label-discharging> <ramp-capacity>
+
+format-charging-prefix = "BAT: "
+format-charging-prefix-foreground = ${colors.light-blue}
+format-full-prefix = "BAT: "
+format-full-prefix-foreground = ${colors.light-blue}
+format-discharging-prefix = "BAT: "
+format-discharging-prefix-foreground = ${colors.light-blue}
+
+ramp-capacity-0 = [|          ]
+ramp-capacity-1 = [||         ]
+ramp-capacity-2 = [|||        ]
+ramp-capacity-3 = [||||       ]
+ramp-capacity-4 = [|||||      ]
+ramp-capacity-5 = [||||||     ]
+ramp-capacity-6 = [|||||||    ]
+ramp-capacity-7 = [||||||||   ]
+ramp-capacity-8 = [|||||||||  ]
+ramp-capacity-9 = [|||||||||| ]
+ramp-capacity-10 = [|||||||||||]
+
+ramp-capacity-0-foreground = ${colors.danger-red}
+ramp-capacity-1-foreground = ${colors.danger-red}
+ramp-capacity-2-foreground = ${colors.dark-red}
+ramp-capacity-3-foreground = ${colors.light-red}
+ramp-capacity-4-foreground = ${colors.light-red}
+ramp-capacity-5-foreground = ${colors.dark-green}
+ramp-capacity-6-foreground = ${colors.dark-green}
+ramp-capacity-7-foreground = ${colors.light-green}
+ramp-capacity-8-foreground = ${colors.light-green}
+ramp-capacity-9-foreground = ${colors.light-green}
+ramp-capacity-10-foreground = ${colors.light-green}
+
+label-charging = (+%consumption% W)
+label-charging-foreground = ${colors.light-green}
+
+label-full = (%consumption% W)
+label-full-foreground = ${colors.dark-green}
+
+label-discharging = (-%consumption% W)
+label-discharging-foreground = ${colors.light-red}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 2
+base-temperature = 0
+warn-temperature = 68
+
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone2/hwmon4/temp1_input
+
+format = <label>
+format-warn = <label-warn>
+
+format-prefix = "TEMP: "
+format-prefix-foreground = ${colors.light-blue}
+format-warn-prefix = "TEMP: "
+format-warn-prefix-foreground = ${colors.light-blue}
+label = %temperature-c%
+label-warn = %temperature-c%   CPU Temperature high!
+label-warn-foreground = ${colors.light-red}
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = ""
+label-open-foreground = ${colors.light-red}
+label-close = cancel
+label-close-foreground = ${colors.light-red}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = yes
+menu-1-0-exec = reboot && notify-send "System is rebooting" -u critical -a "Shutdown Services"
+
+menu-2-0 = now
+menu-2-0-exec = shutdown now && notify-send "Computer is shutting down" -u critical -a "Shutdown Services"
+menu-2-1 = +1
+menu-2-1-exec = shutdown +1 && notify-send "System shutdown has been scheduled to occur in 1 minute" -u critical -a "Shutdown Services"
+menu-2-2 = +5
+menu-2-2-exec = shutdown +5 && notify-send "System shutdown has been scheduled to occur in 5 minutes" -u critical -a "Shutdown Services"
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
