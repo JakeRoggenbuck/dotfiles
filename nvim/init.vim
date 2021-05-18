@@ -302,6 +302,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" Rust <3
+nnoremap <leader>t :RustTest!<CR>
+nnoremap <leader>ts :RustTest<CR>
+nnoremap <leader>rf :RustFmt<CR>
+nnoremap <leader>ot :CocCommand rust-analyzer.openCargoToml<CR>
+
 " Jump to the next word
 nmap =d <Plug>DittoNext
 " Jump to the previous word
@@ -317,9 +323,9 @@ nmap [d <Plug>DittoLess
 
 " Keybinds for the plugin drafts.vim
 let g:drafts_directory = "/home/jake/Library/drafts/"
-nnoremap <Leader>nd :call NewDraft()<CR>
-nnoremap <Leader>ld :call ListDrafts()<CR>
-nnoremap <Leader>z :call OpenDrafts()<CR>
+nnoremap <leader>nd :call NewDraft()<CR>
+nnoremap <leader>ld :call ListDrafts()<CR>
+nnoremap <leader>z :call OpenDrafts()<CR>
 
 let g:journals_directory = "/home/jake/Library/journal"
 
@@ -363,7 +369,7 @@ nmap <silent> <leader>/ :set hlsearch!<cr>
 nmap <silent> <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Possibly broken, not sure but it's pretty cool
-" nnoremap <Leader>fu :CtrlPFunky<Cr>
+" nnoremap <leader>fu :CtrlPFunky<Cr>
 " let g:ctrlp_funky_syntax_highlight = 1
 
 " Some cool symbols for notes
@@ -413,7 +419,7 @@ nnoremap <silent> <leader><C-k> :call WinMove('k')<cr>
 nnoremap <silent> <leader><C-l> :call WinMove('l')<cr>
 
 " Git blame, at bottom
-nnoremap <Leader>B :<C-u>call gitblame#echo()<CR>
+nnoremap <leader>B :<C-u>call gitblame#echo()<CR>
 
 " Highlighting of hex colors
 " Test color #21a6f6
