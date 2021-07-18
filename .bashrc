@@ -90,11 +90,14 @@ alias fgrep='fgrep --colour=auto'
 # python3 alias
 alias p='python3'
 
+# julia interactive mode
+alias j='julia'
+
 # open a fizzy finder
 alias pe='fzf --exact --reverse'
 
 # open a file in vim selected by a fizzy finder
-alias j='nvim $(pe)'
+alias n='nvim $(pe)'
 
 # copy a file from path to path
 alias cp="cp -i"
@@ -115,8 +118,12 @@ alias diff='diff --color=auto'
 
 # nvim command
 alias v='nvim'
+
 # open nvim with sudo permission
 alias sv='sudo nvim'
+
+# v compiler has the same name as my nvim
+alias vc='/usr/local/bin/v'
 
 # open ranger file manager
 alias ra='ranger'
@@ -160,6 +167,9 @@ alias gstat='git status'
 # switch to another branch
 alias gswitch='git switch -c'
 
+# tmux
+alias t="tmux"
+
 # any
 alias a='fasd -a'
 # show / search / select
@@ -181,6 +191,12 @@ alias zz='fasd_cd -d -i'
 alias b='bat'
 # Bat without line numbers or decorators
 alias bp='bat -p'
+
+# View the contents of a file
+alias c='cat'
+
+# View mongo database with mongoc-rs
+alias m='mongoc-rs'
 
 # Hex viewer
 alias x='hexyl'
@@ -242,9 +258,7 @@ start_fasd () {
 	eval "$(fasd --init auto)"
 }
 
-start_starship() {
-	eval "$(starship init bash)"
-}
+eval "$(starship init bash)"
 
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
@@ -253,10 +267,6 @@ fi
 
 if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 	start_fasd
-fi
-
-if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
-	start_starship
 fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
