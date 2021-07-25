@@ -7,7 +7,7 @@ func! g:IsChilling()
 		colorscheme iceberg
 	else
 		let s:chill = 1
-		colorscheme gruvbox
+		colorscheme onedark
 	endif
 endfunc
 

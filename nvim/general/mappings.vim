@@ -71,3 +71,10 @@ nmap <silent> <leader>/ :set hlsearch!<cr>
 " Change current directory to the directory of the file in buffer
 " Wow, i don't remember where i got this, but it's really cool
 nmap <silent> <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <silent> <leader>f :Format<CR>

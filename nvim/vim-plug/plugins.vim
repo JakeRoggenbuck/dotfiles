@@ -35,6 +35,12 @@ Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'mhartington/formatter.nvim'
+
 " Great for quickly viewing and editing latex files, great for taking notes in
 " class or writing papers
 Plug 'lervag/vimtex'

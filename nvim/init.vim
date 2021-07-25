@@ -1,4 +1,4 @@
-"     _  __     _     
+"    _  __     _     
 "    / |/ /  __(_)_ _ 
 "   /    / |/ / /  ` \
 "  /_/|_/|___/_/_/_/_/
@@ -8,12 +8,15 @@
 
 let mapleader =","
 
-set number relativenumber
-set hidden
-set splitbelow splitright
-set ts=4 sw=4
 set encoding=UTF-8
+set hidden
 set history=1000
+set number
+set relativenumber
+set splitbelow
+set splitright
+set termguicolors
+set ts=4 sw=4
 set undolevels=1000
 set nocompatible
 
@@ -41,6 +44,8 @@ source ~/.config/nvim/plug-config/ultisnips.vim
 source ~/.config/nvim/plug-config/vimtex.vim
 
 luafile ~/.config/nvim/lua/plugins/compe-config.lua
+luafile ~/.config/nvim/lua/plugins/telescope.lua
+luafile ~/.config/nvim/lua/plugins/formatter.lua
 
 " Individual language servers
 luafile ~/.config/nvim/lsp/bash-lsp.lua
