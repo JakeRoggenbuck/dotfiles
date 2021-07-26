@@ -44,8 +44,12 @@ source ~/.config/nvim/plug-config/ultisnips.vim
 source ~/.config/nvim/plug-config/vimtex.vim
 
 luafile ~/.config/nvim/lua/plugins/compe-config.lua
-luafile ~/.config/nvim/lua/plugins/telescope.lua
 luafile ~/.config/nvim/lua/plugins/formatter.lua
+luafile ~/.config/nvim/lua/plugins/neorg.lua
+luafile ~/.config/nvim/lua/plugins/rust-tools.lua
+luafile ~/.config/nvim/lua/plugins/telescope.lua
+luafile ~/.config/nvim/lua/plugins/treesitter.lua
+luafile ~/.config/nvim/lua/plugins/trouble.lua
 
 " Individual language servers
 luafile ~/.config/nvim/lsp/bash-lsp.lua
