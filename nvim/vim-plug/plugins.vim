@@ -14,19 +14,34 @@ Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-crystal/vim-crystal'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'simrat39/rust-tools.nvim'
+
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'mattn/emmet-vim'
+Plug 'ThePrimeagen/refactoring.nvim'
 
 " Lua and LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'glepnir/lspsaga.nvim'
+
+" Show issue with code
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
+" Tabline
+Plug 'romgrk/barbar.nvim'
 
 " Really helpful for code golf and other implementations with lots or
 " parentheses, this highlights them to distinguishes which match up
 Plug 'junegunn/rainbow_parentheses.vim'
+
+" Terminal integration
+Plug 'akinsho/nvim-toggleterm.lua'
 
 " Similar to opening files in fzf but is really really fast, but does not
 " let you search as well as fzf, good for small projects or configs
@@ -41,6 +56,8 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'mhartington/formatter.nvim'
 
+Plug 'simrat39/symbols-outline.nvim'
+
 " Great for quickly viewing and editing latex files, great for taking notes in
 " class or writing papers
 Plug 'lervag/vimtex'
@@ -52,17 +69,19 @@ Plug 'tpope/vim-commentary'
 Plug 'google/vim-searchindex'
 
 Plug 'jakeroggenbuck/vim-game-snake'
+Plug 'ThePrimeagen/vim-be-good'
 
 " Python
 Plug 'nvie/vim-flake8'
 " For python, it's got it all
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
-
 " Pytest for vim
 Plug 'alfredodeza/pytest.vim'
 
 Plug 'RRethy/vim-illuminate'
+
+Plug 'vhyrro/neorg'
 
 " Git
 " Really helpful for using git with vim, it has all the needed stuff
@@ -114,6 +133,8 @@ Plug 'roosta/srcery'
 " The bar at the bottom that make vim super useful and look really awesome
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'preservim/nerdtree'
 
 " Great for it's intended purpose of distraction free mode, also great for
 " taking screenshots of code
