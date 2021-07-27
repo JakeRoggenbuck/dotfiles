@@ -11,6 +11,9 @@ let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'b': '~/.bashrc' },
             \ { 'd': g:drafts_directory },
+            \ { 'm': '~/.config/nvim/general/mappings.vim' },
+            \ { 'f': '~/.config/nvim/general/functions.vim' },
+            \ { 's': '~/Repos/ideas/README.md' },
             \ ]
 
 let g:startify_custom_header = [

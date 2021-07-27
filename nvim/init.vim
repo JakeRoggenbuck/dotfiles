@@ -18,6 +18,7 @@ set splitright
 set termguicolors
 set ts=4 sw=4
 set undolevels=1000
+set background=dark
 set nocompatible
 
 set viminfo+=n~/.config/nvim/viminfo
