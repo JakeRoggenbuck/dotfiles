@@ -1,5 +1,7 @@
 # ~/.bashrc
 
+export TERM=xterm-256color
+
 start_cheat_sheet () {
 	cheat_sheet_startup print
 	(cheat_sheet_startup pull &)
@@ -8,7 +10,6 @@ start_cheat_sheet () {
 start_alias_show () {
 	bash_startup_cpp
 }
-
 
 if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
 	start_cheat_sheet
@@ -79,7 +80,7 @@ alias bstr='WM=bspwm startx'
 alias dstr='WM=dwm startx'
 
 # list directories
-alias ls='ls --color=auto'
+alias ls='exa'
 # search contents of files
 alias grep='grep --colour=auto'
 # search contents of files with extended regex, same as 'grep -E'
@@ -258,9 +259,7 @@ start_fasd () {
 	eval "$(fasd --init auto)"
 }
 
-start_starship() {
-    eval "$(starship init bash)"
-}
+eval "$(starship init bash)"
 
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
@@ -271,9 +270,7 @@ if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 	start_fasd
 fi
 
-if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
-       start_starship
-fi
-
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 source "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
