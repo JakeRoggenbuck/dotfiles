@@ -13,6 +13,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-crystal/vim-crystal'
+Plug 'ziglang/zig.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/rust-tools.nvim'
@@ -28,6 +29,8 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'glepnir/lspsaga.nvim'
+
+Plug 'nvim-lua/completion-nvim'
 
 " Show issue with code
 Plug 'kyazdani42/nvim-web-devicons'
@@ -128,6 +131,7 @@ Plug 'itchyny/landscape.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'roosta/srcery'
+Plug 'dracula/vim'
 
 " Appearance
 " The bar at the bottom that make vim super useful and look really awesome
