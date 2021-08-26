@@ -1,0 +1,24 @@
+[[files]]
+name = "bspwm"
+origin = "/home/jake/Build/dotfiles/bspwm/bspwmrc"
+deployed = "/home/jake/.config/bspwm/bspwmrc"
+
+[[files]]
+name = "alacritty"
+origin = "/home/jake/Build/dotfiles/alacritty/alacritty.yml"
+deployed = "/home/jake/.config/alacritty/alacritty.yml"
+
+[[files]]
+name = "bashrc"
+origin = "/home/jake/Build/dotfiles/.bashrc"
+deployed = "/home/jake/.bashrc"
+
+[[files]]
+name = "sxhkd"
+origin = "/home/jake/Build/dotfiles/sxhkd/sxhkdrc"
+deployed = "/home/jake/.config/sxhkd/sxhkdrc"
+
+[[files]]
+name = "nvim"
+origin = "/home/jake/Build/dotfiles/nvim/init.vim"
+deployed = "/home/jake/.config/nvim/init.vim"
