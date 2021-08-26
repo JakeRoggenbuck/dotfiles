@@ -18,26 +18,23 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #dd242424
-background-alt = #3B4252
+background = #dd222222
+background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #D8DEE9
-foreground-alt = #dd2E3440
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
 
-primary = #B48EAD
-secondary = #A3BE8C
-alert = #BF616A
-
-light-blue = #7aa6da
-light-red =  #d54e53
-light-green = #xb9ca4a
-
-nord-purple = #B48EAD
+light-blue = #21a6f6
+light-red =  #e74c3c 
+light-green = #27ae60
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 18
+height = 22
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -199,7 +196,7 @@ bar-indicator-font = 2
 
 bar-fill = x
 bar-fill-font = 2
-bar-fill-foreground = ${colors.nord-purple}
+bar-fill-foreground = #9f78e1
 bar-empty = o
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -231,7 +228,7 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.light-green}
+format-connected-underline = #9f78e1
 label-connected = %essid%
 
 format-disconnected =
@@ -252,7 +249,7 @@ type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-format-connected-underline = ${colors.light-green}
+format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -275,7 +272,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.light-green}
+format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -424,7 +421,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 0
-margin-bottom = 0
+margin-top = 5
+margin-bottom = 5
 
 ; vim:ft=dosini
