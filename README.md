@@ -1,5 +1,7 @@
 # dotfiles
-- A collection of my dotfiles that I use on my GNU/Linux machine (Both Arch and Ubuntu)
+- A collection of my dotfiles that I use on my GNU/Linux machine
+  - Both Arch and Ubuntu.
+  - I also used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine
 - I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-squid) to manage the updating and deplying of my dotfiles
 
 
