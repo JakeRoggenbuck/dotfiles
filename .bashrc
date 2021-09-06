@@ -1,7 +1,5 @@
 # ~/.bashrc
 
-export TERM=xterm-256color
-
 start_cheat_sheet () {
 	cheat_sheet_startup print
 	(cheat_sheet_startup pull &)
