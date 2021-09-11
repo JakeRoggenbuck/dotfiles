@@ -1,7 +1,19 @@
+gitpath = "/home/jake/Build/dotfiles"
+
 [[files]]
 name = "bspwm"
 origin = "/home/jake/Build/dotfiles/bspwm/bspwmrc"
 deployed = "/home/jake/.config/bspwm/bspwmrc"
+
+[[files]]
+name = "stow-squid"
+origin = "/home/jake/Build/dotfiles/stow-squid/stow-squid.toml"
+deployed = "/home/jake/.config/stow-squid/stow-squid.toml"
+
+[[files]]
+name = "tmux"
+origin = "/home/jake/Build/dotfiles/.tmux.conf"
+deployed = "/home/jake/.tmux.conf"
 
 [[files]]
 name = "alacritty"
