@@ -221,10 +221,6 @@ alias groffme='groff -Tps -me'
 alias count="find . -type f | wc -l"
 # download youtube audio from youtube-dl
 alias ytau="youtube-dl -x --audio-format mp3"
-# make voice crazy using sox
-alias vos="sox -t pulseaudio default -t pulseaudio null pitch -200 rate -v -L -b 90 20k gain -10"
-# update the dotfiles
-alias dotup="cd ~/Repos/ConfigFiles/; python ../dot_drop/main.py"
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
