@@ -1,4 +1,5 @@
 # ~/.bashrc
+# Lev version (My laptop)
 
 start_cheat_sheet () {
 	# cheat_sheet_startup print
