@@ -1,4 +1,6 @@
+#!/usr/bin/env bash
 # ~/.bashrc
+# "An" version (My desktop)
 
 start_cheat_sheet () {
 	# cheat_sheet_startup print
