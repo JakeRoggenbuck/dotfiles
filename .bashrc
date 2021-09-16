@@ -1,15 +1,16 @@
 # ~/.bashrc
 
-export TERM=xterm-256color
-
 start_cheat_sheet () {
-	cheat_sheet_startup print
-	(cheat_sheet_startup pull &)
+	# cheat_sheet_startup print
+	# (cheat_sheet_startup pull &)
+	# I don't really like the look of this right now
+	return
 }
 
 start_alias_show () {
 	bash_startup_cpp
 }
+
 
 if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
 	start_cheat_sheet
@@ -225,8 +226,11 @@ alias count="find . -type f | wc -l"
 alias ytau="youtube-dl -x --audio-format mp3"
 # make voice crazy using sox
 alias vos="sox -t pulseaudio default -t pulseaudio null pitch -200 rate -v -L -b 90 20k gain -10"
-# update the dotfiles
-alias dotup="cd ~/Repos/ConfigFiles/; python ../dot_drop/main.py"
+
+rpg () {
+    rpg-cli "$@"
+    cd "$(rpg-cli pwd)"
+}
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
@@ -259,7 +263,9 @@ start_fasd () {
 	eval "$(fasd --init auto)"
 }
 
-eval "$(starship init bash)"
+start_starship() {
+    eval "$(starship init bash)"
+}
 
 # Start ruby env if the command exists
 if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
@@ -270,7 +276,10 @@ if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 	start_fasd
 fi
 
+if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
+       start_starship
+fi
+
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 source "$HOME/.cargo/env"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
