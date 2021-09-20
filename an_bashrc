@@ -63,7 +63,7 @@ get_greek_symbol () {
 	Φ φ	phi
 	Χ χ	chi
 	Ψ ψ	psi
-	Ω ω	omega" | dmenu | awk '{printf $1 "\n" $2}' | dmenu | xclip -sel clip
+	Ω ω	omega" | dmenu | awk '{printf $1 "\n" $2}' | dmenu | tr -d "\n" | xclip -sel clip
 }
 
 
