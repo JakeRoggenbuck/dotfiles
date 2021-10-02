@@ -1,3 +1,4 @@
+
 " Chill out if I am feeling chill
 let s:chill = 0
 
@@ -7,7 +8,7 @@ func! g:IsChilling()
 		colorscheme iceberg
 	else
 		let s:chill = 1
-		colorscheme onedark
+		colorscheme edge
 	endif
 endfunc
 

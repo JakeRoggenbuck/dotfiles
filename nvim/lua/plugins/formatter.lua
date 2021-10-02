@@ -5,7 +5,7 @@ require("formatter").setup({
 			function()
 				return {
 					exe = "black",
-					args = {},
+					args = { "-l 100", "-S" },
 					stdin = false,
 				}
 			end,
@@ -113,12 +113,12 @@ require("formatter").setup({
 	},
 })
 
-vim.api.nvim_exec(
-	[[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.py,*.c,*.cpp,*.css,*.html,*.js,*.jsx,*.ts,*.tsx,*.rs,*.lua FormatWrite
-augroup END
-]],
-	true
-)
+-- vim.api.nvim_exec(
+-- 	[[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.py,*.c,*.cpp,*.css,*.html,*.js,*.jsx,*.ts,*.tsx,*.rs,*.lua FormatWrite
+-- augroup END
+-- ]],
+-- 	true
+-- )

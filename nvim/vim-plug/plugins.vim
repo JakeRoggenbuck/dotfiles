@@ -14,6 +14,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-crystal/vim-crystal'
 Plug 'ziglang/zig.vim'
+Plug 'jakwings/vim-pony'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/rust-tools.nvim'
@@ -132,6 +133,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'roosta/srcery'
 Plug 'dracula/vim'
+Plug 'sainnhe/edge'
 
 " Appearance
 " The bar at the bottom that make vim super useful and look really awesome
