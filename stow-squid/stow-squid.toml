@@ -21,13 +21,8 @@ origin = "/home/jake/Build/dotfiles/alacritty/alacritty.yml"
 deployed = "/home/jake/.config/alacritty/alacritty.yml"
 
 [[files]]
-name = "lev_bashrc"
-origin = "/home/jake/Build/dotfiles/lev_bashrc"
-deployed = "/home/jake/.bashrc"
-
-[[files]]
-name = "an_bashrc"
-origin = "/home/jake/Build/dotfiles/an_bashrc"
+name = "bashrc"
+origin = "/home/jake/Build/dotfiles/bashrc"
 deployed = "/home/jake/.bashrc"
 
 [[files]]

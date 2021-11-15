@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 # ~/.bashrc
-# Lev version (My laptop)
 
 start_cheat_sheet () {
-	# cheat_sheet_startup print
-	# (cheat_sheet_startup pull &)
-	# I don't really like the look of this right now
-	return
+	cheat_sheet_startup print
+	(cheat_sheet_startup pull &)
 }
 
 start_alias_show () {
 	bash_startup_cpp
 }
-
 
 if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
 	start_cheat_sheet
@@ -42,32 +38,33 @@ git_color () {
 }
 
 get_greek_symbol () {
-    echo "
-    Α α alpha
-    Β β beta
-    Γ γ gamma
-    Δ δ delta
-    Ε ε epsilon
-    Ζ ζ zeta
-    Η η eta
-    Θ θ theta
-    Ι ι iota
-    Κ κ kappa
-    Λ λ lambda
-    Μ μ mu
-    Ν ν nu
-    Ξ ξ xi
-    Ο ο omicron
-    Π π pi
-    Ρ ρ rho
-    Σ σ sigma
-    Τ τ tau
-    Υ υ upsilon
-    Φ φ phi
-    Χ χ chi
-    Ψ ψ psi
-    Ω ω omega" | dmenu | awk '{printf $1 "\n" $2}' | dmenu | tr -d "\n" | xclip -sel clip
+	echo "
+	Α α	alpha
+	Β β	beta
+	Γ γ	gamma
+	Δ δ	delta
+	Ε ε	epsilon
+	Ζ ζ	zeta
+	Η η	eta
+	Θ θ	theta
+	Ι ι	iota
+	Κ κ	kappa
+	Λ λ	lambda
+	Μ μ	mu
+	Ν ν	nu
+	Ξ ξ	xi
+	Ο ο	omicron
+	Π π	pi
+	Ρ ρ	rho
+	Σ σ	sigma
+	Τ τ	tau
+	Υ υ	upsilon
+	Φ φ	phi
+	Χ χ	chi
+	Ψ ψ	psi
+	Ω ω	omega" | dmenu | awk '{printf $1 "\n" $2}' | dmenu | tr -d "\n" | xclip -sel clip
 }
+
 
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -258,11 +255,6 @@ alias count="find . -type f | wc -l"
 # download youtube audio from youtube-dl
 alias ytau="youtube-dl -x --audio-format mp3"
 
-rpg () {
-    rpg-cli "$@"
-    cd "$(rpg-cli pwd)"
-}
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
     echo -en "\e]P82B2B2B" #darkgrey
@@ -308,9 +300,10 @@ if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
 fi
 
 if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
-       start_starship
+    start_starship
 fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
