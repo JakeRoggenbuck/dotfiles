@@ -12,11 +12,11 @@ esac
 export PROFILE=$PROFILE
 
 if [[ $PROFILE -eq $ANASTASIUS ]]; then
-	CHEAT_SHEET=1
-	ALIAS_SHOW=0
-	RUBY=1
-	FASD=1
-	STARSHIP=1
+	CHEAT_SHEET=0
+	ALIAS_SHOW=1
+	RUBY=0
+	FASD=0
+	STARSHIP=0
 elif [[ $PROFILE -eq $LEV ]]; then
 	CHEAT_SHEET=0
 	ALIAS_SHOW=1
@@ -51,41 +51,6 @@ start_fasd () {
 start_starship() {
     eval "$(starship init bash)"
 }
-
-
-if [[ $CHEAT_SHEET -eq 1 ]]; then
-	if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
-		start_cheat_sheet
-	else
-		echo "Install cheat_sheet_startup and add it to your PATH"
-	fi
-fi
-
-if [[ $ALIAS_SHOW -eq 1 ]]; then
-	if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]; then
-		start_alias_show
-	else
-		echo "Install bash_startup_cpp and add it to your PATH"
-	fi
-fi
-
-if [[ $RUBY -eq 1 ]]; then
-	if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
-		start_ruby
-	fi
-fi
-
-if [[ $FASD -eq 1 ]]; then
-	if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
-		start_fasd
-	fi
-fi
-
-if [[ $STARSHIP -eq 1 ]]; then
-	if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
-		start_starship
-	fi
-fi
 
 git_color () {
 	# Inspired by function from https://github.com/jishnusen/dots
@@ -342,7 +307,42 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 source "$HOME/.cargo/env"
+
+if [[ $CHEAT_SHEET -eq 1 ]]; then
+	if [[ $(which cheat_sheet_startup & >/dev/null 2>&1) ]]; then
+		start_cheat_sheet
+	else
+		echo "Install cheat_sheet_startup and add it to your PATH"
+	fi
+fi
+
+if [[ $ALIAS_SHOW -eq 1 ]]; then
+	if [[ $(which bash_startup_cpp & >/dev/null 2>&1) ]]; then
+		start_alias_show
+	else
+		echo "Install bash_startup_cpp and add it to your PATH"
+	fi
+fi
+
+if [[ $RUBY -eq 1 ]]; then
+	if [[ $(which rbenv & >/dev/null 2>&1) ]]; then
+		start_ruby
+	fi
+fi
+
+if [[ $FASD -eq 1 ]]; then
+	if [[ $(which fasd & >/dev/null 2>&1) ]]; then
+		start_fasd
+	fi
+fi
+
+if [[ $STARSHIP -eq 1 ]]; then
+	if [[ $(which starship & >/dev/null 2>&1) ]]; then
+		start_starship
+	fi
+fi
+
+2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
