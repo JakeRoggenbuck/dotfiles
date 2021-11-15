@@ -223,6 +223,8 @@ alias gpush='git push'
 alias gra='git remote add'
 # check the cached diff, after you commit changes
 alias gdc='git diff --cached'
+# Git diff but each char
+alias gdp='git diff --word-diff=color --word-diff-regex=.'
 # git status, unstages, staged, modified, etc
 alias gstat='git status'
 # switch to another branch
