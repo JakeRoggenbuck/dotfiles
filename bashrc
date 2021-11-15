@@ -1,6 +1,36 @@
 #!/usr/bin/env bash
 # ~/.bashrc
 
+ANASTASIUS=0
+LEV=1
+
+case "$(uname -n)" in
+ "anastasius") PROFILE=$ANASTASIUS ;;
+ "lev") PROFILE=$LEV ;;
+esac
+
+export PROFILE=$PROFILE
+
+if [[ $PROFILE -eq $ANASTASIUS ]]; then
+	CHEAT_SHEET=1
+	ALIAS_SHOW=0
+	RUBY=1
+	FASD=1
+	STARSHIP=1
+elif [[ $PROFILE -eq $LEV ]]; then
+	CHEAT_SHEET=0
+	ALIAS_SHOW=1
+	RUBY=0
+	FASD=0
+	STARSHIP=0
+else
+	CHEAT_SHEET=0
+	ALIAS_SHOW=0
+	RUBY=0
+	FASD=0
+	STARSHIP=0
+fi
+
 start_cheat_sheet () {
 	cheat_sheet_startup print
 	(cheat_sheet_startup pull &)
@@ -10,16 +40,51 @@ start_alias_show () {
 	bash_startup_cpp
 }
 
-if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
-	start_cheat_sheet
-else
-	echo "Install cheat_sheet_startup and add it to your PATH"
+start_ruby () {
+	eval "$(rbenv init -)"
+}
+
+start_fasd () {
+	eval "$(fasd --init auto)"
+}
+
+start_starship() {
+    eval "$(starship init bash)"
+}
+
+
+if [[ $CHEAT_SHEET -eq 1 ]]; then
+	if [ 2>/dev/null 1>/dev/null $(which cheat_sheet_startup) ]; then
+		start_cheat_sheet
+	else
+		echo "Install cheat_sheet_startup and add it to your PATH"
+	fi
 fi
 
-if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]; then
-	start_alias_show
-else
-	echo "Install bash_startup_cpp and add it to your PATH"
+if [[ $ALIAS_SHOW -eq 1 ]]; then
+	if [ 2>/dev/null 1>/dev/null $(which bash_startup_cpp) ]; then
+		start_alias_show
+	else
+		echo "Install bash_startup_cpp and add it to your PATH"
+	fi
+fi
+
+if [[ $RUBY -eq 1 ]]; then
+	if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
+		start_ruby
+	fi
+fi
+
+if [[ $FASD -eq 1 ]]; then
+	if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
+		start_fasd
+	fi
+fi
+
+if [[ $STARSHIP -eq 1 ]]; then
+	if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
+		start_starship
+	fi
 fi
 
 git_color () {
@@ -64,7 +129,6 @@ get_greek_symbol () {
 	Ψ ψ	psi
 	Ω ω	omega" | dmenu | awk '{printf $1 "\n" $2}' | dmenu | tr -d "\n" | xclip -sel clip
 }
-
 
 HISTSIZE=100000
 HISTFILESIZE=200000
@@ -277,31 +341,6 @@ fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-
-start_ruby () {
-	eval "$(rbenv init -)"
-}
-
-start_fasd () {
-	eval "$(fasd --init auto)"
-}
-
-start_starship() {
-    eval "$(starship init bash)"
-}
-
-# Start ruby env if the command exists
-if [ $(2>/dev/null 1>/dev/null which rbenv &) ]; then
-	start_ruby
-fi
-
-if [ $(2>/dev/null 1>/dev/null which fasd &) ]; then
-	start_fasd
-fi
-
-if [ $(2>/dev/null 1>/dev/null which starship &) ]; then
-    start_starship
-fi
 
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 source "$HOME/.cargo/env"
