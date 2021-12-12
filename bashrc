@@ -155,10 +155,10 @@ alias p='python3'
 alias j='julia'
 
 # open a fizzy finder
-alias pe='fzf --exact --reverse'
+alias e='fzf --exact --reverse'
 
 # open a file in vim selected by a fizzy finder
-alias n='nvim $(pe)'
+alias n='nvim $(fzf --exact --reverse)'
 
 # copy a file from path to path
 alias cp="cp -i"
@@ -229,6 +229,12 @@ alias gdp='git diff --word-diff=color --word-diff-regex=.'
 alias gstat='git status'
 # switch to another branch
 alias gswitch='git switch -c'
+
+# get https link for git repo origin
+alias gt="git remote -v | grep origin | head -1 | awk '{ print \$2}' | sed 's/com:/com\//g' | sed 's/git@/https:\/\//g'"
+
+# go to gt
+alias gto='xdg-open $(gt)'
 
 # tmux
 alias t="tmux"
