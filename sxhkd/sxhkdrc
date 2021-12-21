@@ -30,7 +30,7 @@ super + shift + p
 	firefox
 
 super + alt + l
-	betterlockscreen --lock
+	bash $SCRIPTS/$(echo -e "bye\nblur-lock" | dmenu  -p "Lock")
 
 # make sxhkd reload its configuration files:
 super + Escape
