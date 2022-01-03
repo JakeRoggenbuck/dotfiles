@@ -314,6 +314,7 @@ fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.yflat/bin:$PATH"
 
 source "$HOME/.cargo/env"
 
