@@ -148,6 +148,9 @@ alias egrep='egrep --colour=auto'
 # search contents of a file with a fixed-character string
 alias fgrep='fgrep --colour=auto'
 
+# Open my draft
+alias drafts='v ~/Library/drafts/$(ls ~/Library/drafts/ | fzf)'
+
 # python3 alias
 alias p='python3'
 
