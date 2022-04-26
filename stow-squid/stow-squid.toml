@@ -34,3 +34,8 @@ deployed = "/home/jake/.config/sxhkd/sxhkdrc"
 name = "nvim"
 origin = "/home/jake/Build/dotfiles/nvim/init.vim"
 deployed = "/home/jake/.config/nvim/init.vim"
+
+[[files]]
+name = "polybar"
+origin = "/home/jake/Build/dotfiles/polybar/config"
+deployed = "/home/jake/.config/polybar/config"
