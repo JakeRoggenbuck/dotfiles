@@ -39,3 +39,8 @@ deployed = "/home/jake/.config/nvim/init.vim"
 name = "polybar"
 origin = "/home/jake/Build/dotfiles/polybar/config"
 deployed = "/home/jake/.config/polybar/config"
+
+[[files]]
+name = "profile"
+origin = "/home/jake/Build/dotfiles/.bash_profile"
+deployed = "/home/jake/.profile"
