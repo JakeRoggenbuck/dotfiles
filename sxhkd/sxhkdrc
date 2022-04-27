@@ -7,6 +7,7 @@ super + Return
 super + shift + Return
 	st
 
+
 ctrl + shift + Return
 	termite
 
@@ -30,7 +31,7 @@ super + shift + p
 	firefox
 
 super + alt + l
-	bash $SCRIPTS/$(echo -e "bye\nblur-lock" | dmenu  -p "Lock")
+	betterlockscreen --lock
 
 # make sxhkd reload its configuration files:
 super + Escape
