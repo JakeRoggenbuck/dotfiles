@@ -44,3 +44,8 @@ deployed = "/home/jake/.config/polybar/config"
 name = "profile"
 origin = "/home/jake/Build/dotfiles/.bash_profile"
 deployed = "/home/jake/.profile"
+
+[[files]]
+name = "picom"
+origin = "/home/jake/Build/dotfiles/picom/picom.conf"
+deployed = "/home/jake/.config/picom/picom.conf"
