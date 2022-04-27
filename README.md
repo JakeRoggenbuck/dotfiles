@@ -1,6 +1,6 @@
 # dotfiles
 - A collection of my dotfiles that I use on my GNU/Linux machine
-  - Both Arch and Ubuntu.
+  - Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop).
   - I also used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine
 
 # Tools
