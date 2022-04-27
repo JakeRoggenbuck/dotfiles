@@ -131,6 +131,8 @@ shopt -s checkwinsize
 # Note: The aliases are all documented so a future unnamed program
 # can extract a bit of context for each alias
 
+# Open my draft
+alias drafts='v ~/Library/drafts/$(ls ~/Library/drafts/ | fzf)'
 # start x server with bspwm as window manager
 alias bstr='WM=bspwm startx'
 # start x server with dwm as window manager
@@ -229,6 +231,12 @@ alias gdp='git diff --word-diff=color --word-diff-regex=.'
 alias gstat='git status'
 # switch to another branch
 alias gswitch='git switch -c'
+
+# get https link for git repo origin
+alias gt="git remote -v | grep origin | head -1 | awk '{ print \$2}' | sed 's/com:/com\//g' | sed 's/git@/https:\/\//g'"
+
+# go to gt
+alias gto='xdg-open $(gt)'
 
 # tmux
 alias t="tmux"
