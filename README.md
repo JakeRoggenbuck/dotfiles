@@ -7,6 +7,8 @@
 - I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-squid) to manage the updating and deplying of my dotfiles
   - The config for that can be found also in the repo [here](https://github.com/JakeRoggenbuck/dotfiles/tree/master/stow-squid)
 
+![image](https://user-images.githubusercontent.com/35516367/165446679-a182aad1-f967-4f03-9214-4ae620bf20e5.png)
+
 # Configs
 ## Nvim, Tmux, Alacritty
 ![image](https://user-images.githubusercontent.com/35516367/131428130-f3dae3f1-6bca-4b08-93e0-8d8ef3e42031.png)
