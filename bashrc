@@ -142,7 +142,7 @@ alias dstr='WM=dwm startx'
 alias gg='get_greek_symbol'
 
 # list directories
-alias ls='exa'
+# alias ls='exa'
 # search contents of files
 alias grep='grep --colour=auto'
 # search contents of files with extended regex, same as 'grep -E'
@@ -293,6 +293,8 @@ alias groffme='groff -Tps -me'
 alias count="find . -type f | wc -l"
 # download youtube audio from youtube-dl
 alias ytau="youtube-dl -x --audio-format mp3"
+
+alias rec="ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 -c:v libx264 -preset superfast -crf 18 out.mp4"
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P0232323" #black
