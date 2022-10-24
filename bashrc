@@ -141,14 +141,20 @@ alias dstr='WM=dwm startx'
 # get greek character
 alias gg='get_greek_symbol'
 
+# autoignore by adamhutchings - https://github.com/adamhutchings/autoignore
+alias autoignore='python3 /home/jake/Build/autoignore/src/main.py'
+
 # list directories
-# alias ls='exa'
+alias ls='exa'
 # search contents of files
 alias grep='grep --colour=auto'
 # search contents of files with extended regex, same as 'grep -E'
 alias egrep='egrep --colour=auto'
 # search contents of a file with a fixed-character string
 alias fgrep='fgrep --colour=auto'
+
+# gcc with all, error, extra
+alias gccc='gcc -Wall -Werror -Wextra'
 
 # python3 alias
 alias p='python3'
@@ -319,8 +325,6 @@ fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-source "$HOME/.cargo/env"
-
 if [[ $CHEAT_SHEET -eq 1 ]]; then
 	if [[ $(which cheat_sheet_startup & >/dev/null 2>&1) ]]; then
 		start_cheat_sheet
@@ -358,3 +362,4 @@ fi
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
