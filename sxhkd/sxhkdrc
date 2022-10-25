@@ -31,7 +31,7 @@ super + shift + p
 	firefox
 
 super + alt + l
-	betterlockscreen --lock
+	xscreensaver-command --lock
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -45,7 +45,6 @@ source ~/.config/nvim/plug-config/ultisnips.vim
 source ~/.config/nvim/plug-config/vimtex.vim
 
 " Configuration for lua plugins
-luafile ~/.config/nvim/lua/plugins/compe-config.lua
 luafile ~/.config/nvim/lua/plugins/formatter.lua
 luafile ~/.config/nvim/lua/plugins/neorg.lua
 luafile ~/.config/nvim/lua/plugins/rust-tools.lua

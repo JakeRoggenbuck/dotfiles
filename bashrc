@@ -362,4 +362,3 @@ fi
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
