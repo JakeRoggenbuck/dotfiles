@@ -2,7 +2,7 @@
 
 sxhkd &
 dunst &
-picom --experimental-backends &
+picom &
 xscreensaver &
 polybar example &
 redshift -P -O 3900 &
