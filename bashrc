@@ -7,6 +7,7 @@ LEV=1
 case "$(uname -n)" in
  "anastasius") PROFILE=$ANASTASIUS ;;
  "lev") PROFILE=$LEV ;;
+ "occam") PROFILE=$LEV ;;
 esac
 
 export PROFILE=$PROFILE
@@ -23,6 +24,10 @@ elif [[ $PROFILE -eq $LEV ]]; then
 	RUBY=0
 	FASD=0
 	STARSHIP=0
+
+	if [[ $(date "+%m") -eq 10 ]]; then
+		SPOOKY=1
+	fi
 else
 	CHEAT_SHEET=0
 	ALIAS_SHOW=0
@@ -155,6 +160,9 @@ alias fgrep='fgrep --colour=auto'
 
 # gcc with all, error, extra
 alias gccc='gcc -Wall -Werror -Wextra'
+
+# port checker
+alias pc="port-checker"
 
 # python3 alias
 alias p='python3'
@@ -330,6 +338,14 @@ if [[ $CHEAT_SHEET -eq 1 ]]; then
 		start_cheat_sheet
 	else
 		echo "Install cheat_sheet_startup and add it to your PATH"
+	fi
+fi
+
+if [[ $SPOOKY -eq 1 ]]; then
+	if [[ $(which spookyfetch & >/dev/null 2>&1) ]]; then
+		spookyfetch
+	else
+		echo "Install spookyfetch and add it to your PATH"
 	fi
 fi
 

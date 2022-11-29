@@ -22,7 +22,7 @@ background = #dd2E3440
 background-alt = #3B4252
 ;foreground = ${xrdb:color7:#222}
 foreground = #D8DEE9
-foreground-alt = #dd2E3440
+foreground-alt = #888888
 
 primary = #B48EAD
 secondary = #A3BE8C
@@ -37,7 +37,7 @@ nord-purple = #B48EAD
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 22
+height = 30
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -46,7 +46,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 4
 line-color = #f00
 
 border-size = 0
@@ -58,7 +58,7 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+font-0 = fixed:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -215,7 +215,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.light-blue}
-label = %percentage:2%%
+label = CPU: %percentage:2%%
 
 [module/memory]
 type = internal/memory
@@ -223,7 +223,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.light-blue}
-label = %percentage_used%%
+label = MEM: %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -240,16 +240,16 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = |
+ramp-signal-1 = ||
+ramp-signal-2 = |||
+ramp-signal-3 = ||||
+ramp-signal-4 = |||||
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp0s31f6
+interface = enp5s0
 interval = 3.0
 
 format-connected-underline = ${colors.light-green}
@@ -267,11 +267,11 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = %A %d |
+date-alt = %A %m-%d-%Y |
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -283,7 +283,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = VOL: %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted =muted
