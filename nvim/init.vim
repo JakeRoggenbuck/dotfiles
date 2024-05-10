@@ -23,10 +23,14 @@ set nocompatible
 
 set viminfo+=n~/.config/nvim/viminfo
 
+" https://xkcd.com/927/
+luafile ~/.config/nvim/other-init.lua
+
 " Vim plug list
 source ~/.config/nvim/vim-plug/plugins.vim
 
 " General configuration
+source ~/.config/nvim/general/theme.vim
 source ~/.config/nvim/general/functions.vim
 source ~/.config/nvim/general/mappings.vim
 
@@ -51,6 +55,7 @@ luafile ~/.config/nvim/lua/plugins/rust-tools.lua
 luafile ~/.config/nvim/lua/plugins/telescope.lua
 luafile ~/.config/nvim/lua/plugins/treesitter.lua
 luafile ~/.config/nvim/lua/plugins/trouble.lua
+luafile ~/.config/nvim/lua/plugins/todo-comments.lua
 
 " Individual language servers
 luafile ~/.config/nvim/lsp/bash-lsp.lua
@@ -60,6 +65,7 @@ luafile ~/.config/nvim/lsp/python-lsp.lua
 luafile ~/.config/nvim/lsp/rust-lsp.lua
 luafile ~/.config/nvim/lsp/typescript-lsp.lua
 luafile ~/.config/nvim/lsp/yaml-lsp.lua
+luafile ~/.config/nvim/lsp/clangd-lsp.lua
 
 " Change color of spelling error
 autocmd ColorScheme * hi SpellBad cterm=Underline ctermfg=203

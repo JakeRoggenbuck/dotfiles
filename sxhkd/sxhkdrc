@@ -56,7 +56,7 @@ F1
 F2
 	bash $SCRIPTS/audio down
 
-F3
+alt + F3
 	bash $SCRIPTS/audio up
 
 #backlight

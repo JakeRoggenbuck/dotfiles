@@ -22,10 +22,14 @@ elif [[ $PROFILE -eq $LEV ]]; then
 	CHEAT_SHEET=0
 	ALIAS_SHOW=1
 	RUBY=0
-	FASD=0
+	FASD=1
 	STARSHIP=0
+	
+	# Because 08 and 09 are octals but 03 and 04 are not
+	MONTH=$(date "+%m")
+	MONTH=10#${MONTH}
 
-	if [[ $(date "+%m") -eq 10 ]]; then
+	if [[ $MONTH -eq 10 ]]; then
 		SPOOKY=1
 	fi
 else
@@ -103,13 +107,21 @@ get_greek_symbol () {
 HISTSIZE=100000
 HISTFILESIZE=200000
 
+show_status_if_segfault() {
+	STATUS=$?
+	if [[ $STATUS -eq 139 ]]; then
+		echo -e '\e[01;31m :( \e[m'
+	fi
+}
+
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# When did i add this??
+# [[ $- != *i* ]] && return
 
 if [[ ${EUID} == 0 ]]; then
 	PS1='\[\e[00;00m\]\W\[$(git_color)\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-	PS1='\[\e[00;00m\]\W\[$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+	PS1='\[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
 fi
 
 export SCRIPTS="/home/jake/.scripts/"
@@ -136,6 +148,9 @@ shopt -s checkwinsize
 # Note: The aliases are all documented so a future unnamed program
 # can extract a bit of context for each alias
 
+# Find aliases with fzf
+alias falias='cat ~/.bashrc | grep -wn "alias" | fzf'
+
 # Open my draft
 alias drafts='v ~/Library/drafts/$(ls ~/Library/drafts/ | fzf)'
 # start x server with bspwm as window manager
@@ -143,8 +158,22 @@ alias bstr='WM=bspwm startx'
 # start x server with dwm as window manager
 alias dstr='WM=dwm startx'
 
+# color valgrind
+alias val='color-valgrind'
+
 # get greek character
 alias gg='get_greek_symbol'
+
+# open common info buffer - a pretotype for a program to save info
+huh() {
+	if [[ "$1" == "save" ]]; then
+		nvim ~/Library/huh.md
+	elif [[ "$1" == "find" ]]; then
+		grep -r -B 4 -A 10 --color=auto "$2" Library/huh.md
+	else
+		echo "huh save,find [word]"
+	fi
+}
 
 # autoignore by adamhutchings - https://github.com/adamhutchings/autoignore
 alias autoignore='python3 /home/jake/Build/autoignore/src/main.py'
@@ -176,6 +205,8 @@ alias pe='fzf --exact --reverse'
 # open a file in vim selected by a fizzy finder
 alias n='nvim $(pe)'
 
+alias u='cd ~/Repos/; nvim $(fzf --exact -i)'
+
 # copy a file from path to path
 alias cp="cp -i"
 # show disc usage with the human readable flag
@@ -185,6 +216,11 @@ alias tree="tree -C"
 # show a better tree with exa
 alias btree="exa -T --level 2"
 
+# save last run command to a file for saving good shell commands (llve) for sheLL saVE
+alias llve='echo "$(date),	$(history | tail -2 | head -1 | cut -c8-)" >> ~/Library/sheLL-save.txt'
+# list shell save
+alias lllve='cat ~/Library/sheLL-save.txt'
+
 # list each file with it's human readable size 
 alias lt='ls --human-readable --size -1 -S --classify'
 # list files by last edited
@@ -192,6 +228,14 @@ alias lastt='ls -t1l'
 
 # color highlight of diff by default
 alias diff='diff --color=auto'
+
+# look through a whole commit history (every line that goes in our out of a repository)
+alias lookz='git remote && git log --pretty=oneline --abbrev-commit | awk '"'"'{print $1}'"'"' | xargs -I {} git show {} | fzf'
+
+alias look='git remote && git log --pretty=oneline --abbrev-commit | awk '"'"'{print $1}'"'"' | xargs -I {} git show {}'
+
+# list, pick, then cd to any open terminal's cwd
+alias ot='cd $(ps aux | grep "/bin/bash" | awk '"'"'{print $2}'"'"' | xargs -I {} lsof -p {} | grep cwd | awk '"'"'{print $9}'"'"' | sort -u | fzf)'
 
 # nvim command
 alias v='nvim'
@@ -268,7 +312,7 @@ alias sd='fasd -sid'
 # interactive file selection
 alias sf='fasd -sif'
 # cd, same functionality as j in autojump
-alias z='fasd_cd -d'
+alias zd='fasd_cd -d'
 # cd with interactive selection
 alias zz='fasd_cd -d -i'
 
@@ -280,8 +324,8 @@ alias bp='bat -p'
 # View the contents of a file
 alias c='cat'
 
-# View mongo database with mongoc-rs
-alias m='mongoc-rs'
+# Run mprocs commnad
+alias m='mprocs'
 
 # Hex viewer
 alias x='hexyl'

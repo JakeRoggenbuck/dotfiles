@@ -18,19 +18,19 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #dd2E3440
+background = #333333
 background-alt = #3B4252
 ;foreground = ${xrdb:color7:#222}
 foreground = #D8DEE9
 foreground-alt = #888888
 
-primary = #B48EAD
+primary = #2874a6
 secondary = #A3BE8C
 alert = #BF616A
 
-light-blue = #88C0D0
-light-red =  #BF616A
-light-green = #8FBCBB
+light-blue = #2874a6
+light-red = #e74c3c 
+light-green = #2ecc71
 
 nord-purple = #B48EAD
 
