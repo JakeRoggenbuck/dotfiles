@@ -50,7 +50,7 @@ source ~/.config/nvim/plug-config/vimtex.vim
 
 " Configuration for lua plugins
 luafile ~/.config/nvim/lua/plugins/formatter.lua
-luafile ~/.config/nvim/lua/plugins/neorg.lua
+" luafile ~/.config/nvim/lua/plugins/neorg.lua
 luafile ~/.config/nvim/lua/plugins/rust-tools.lua
 luafile ~/.config/nvim/lua/plugins/telescope.lua
 luafile ~/.config/nvim/lua/plugins/treesitter.lua

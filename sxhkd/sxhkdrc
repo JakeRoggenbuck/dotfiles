@@ -7,6 +7,8 @@ super + Return
 super + shift + Return
 	st
 
+# ctrl + w
+# 	notify-send "oops"
 
 ctrl + shift + Return
 	termite
@@ -56,8 +58,8 @@ F1
 F2
 	bash $SCRIPTS/audio down
 
-alt + F3
-	bash $SCRIPTS/audio up
+#F3
+#	bash $SCRIPTS/audio up
 
 #backlight
 F11

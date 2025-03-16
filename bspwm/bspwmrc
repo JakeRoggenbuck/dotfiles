@@ -13,8 +13,9 @@ bash $HOME/.scripts/startup bspwm
 
 bspc config border_width         6
  
-bspc config focused_border_color "#3498db"
+# bspc config focused_border_color "#3498db"
 # bspc config focused_border_color "#d35400"
+bspc config focused_border_color "#7c27a0"
 
 bspc config window_gap           4
 bspc config split_ratio          0.5

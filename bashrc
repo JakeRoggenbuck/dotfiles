@@ -15,12 +15,14 @@ export PROFILE=$PROFILE
 if [[ $PROFILE -eq $ANASTASIUS ]]; then
 	CHEAT_SHEET=0
 	ALIAS_SHOW=1
+	SPELLING_SHOW=0
 	RUBY=0
 	FASD=0
 	STARSHIP=0
 elif [[ $PROFILE -eq $LEV ]]; then
 	CHEAT_SHEET=0
 	ALIAS_SHOW=1
+	SPELLING_SHOW=0
 	RUBY=0
 	FASD=1
 	STARSHIP=0
@@ -35,6 +37,7 @@ elif [[ $PROFILE -eq $LEV ]]; then
 else
 	CHEAT_SHEET=0
 	ALIAS_SHOW=0
+	SPELLING_SHOW=0
 	RUBY=0
 	FASD=0
 	STARSHIP=0
@@ -44,6 +47,12 @@ start_cheat_sheet () {
 	cheat_sheet_startup print
 	(cheat_sheet_startup pull &)
 }
+
+
+start_spelling_show () {
+	cat /home/jake/.local/share/spelling/spelling.txt
+}
+
 
 start_alias_show () {
 	bash_startup_cpp
@@ -73,6 +82,22 @@ git_color () {
 			local color='\e[1;34m'
 		fi
 		echo -e $color
+	fi
+}
+
+ssh_added () {
+	# Show a "*" in green if an SSH key has been added
+	# for use with git and show a red one if it's not added
+	# You can add a key with ssh-add
+
+	SSH_AGENT_STRING="$(ssh-add -L)"
+	# 28 if no agent added
+	AGENT_LEN=${#SSH_AGENT_STRING}
+
+	if [[ $AGENT_LEN -eq 28 ]]; then
+		echo -e "\e[01;31m*\e[m"
+	else
+		echo -e "\e[01;32m*\e[m"
 	fi
 }
 
@@ -121,7 +146,7 @@ show_status_if_segfault() {
 if [[ ${EUID} == 0 ]]; then
 	PS1='\[\e[00;00m\]\W\[$(git_color)\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-	PS1='\[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+	PS1='\[$(ssh_added)\] \[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
 fi
 
 export SCRIPTS="/home/jake/.scripts/"
@@ -229,6 +254,9 @@ alias lastt='ls -t1l'
 # color highlight of diff by default
 alias diff='diff --color=auto'
 
+# ECS version of go
+alias ecsgo='/home/jake/Repos/ECS140A/install-go/go/bin/go'
+
 # look through a whole commit history (every line that goes in our out of a repository)
 alias lookz='git remote && git log --pretty=oneline --abbrev-commit | awk '"'"'{print $1}'"'"' | xargs -I {} git show {} | fzf'
 
@@ -253,6 +281,9 @@ alias sr='sudo ranger'
 
 # clear the screen
 alias cl='clear'
+
+# find a absolute PATH WITH a keyword in it
+alias pw='ls --absolute -Rl | grep'
 
 # open emacs
 alias em='emacs'
@@ -289,6 +320,11 @@ alias gdp='git diff --word-diff=color --word-diff-regex=.'
 alias gstat='git status'
 # switch to another branch
 alias gswitch='git switch -c'
+# fuzzy branch switch
+alias fb='git switch $(git branch | fzf)'
+
+# backlight - the name is hard to remember (and I picked the name)
+alias l='sxbsbamdws'
 
 # get https link for git repo origin
 alias gt="git remote -v | grep origin | head -1 | awk '{ print \$2}' | sed 's/com:/com\//g' | sed 's/git@/https:\/\//g'"
@@ -385,6 +421,14 @@ if [[ $CHEAT_SHEET -eq 1 ]]; then
 	fi
 fi
 
+if [[ $SPELLING_SHOW -eq 1 ]]; then
+	if [[ $(which cheat_sheet_startup & >/dev/null 2>&1) ]]; then
+		start_spelling_show
+	else
+		echo "Install cheat_sheet_startup and add it to your PATH"
+	fi
+fi
+
 if [[ $SPOOKY -eq 1 ]]; then
 	if [[ $(which spookyfetch & >/dev/null 2>&1) ]]; then
 		spookyfetch
@@ -422,3 +466,9 @@ fi
 2>/dev/null 1>/dev/null eval "$(ssh-agent -s)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+PATH="/home/jake/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/jake/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/jake/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/jake/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/jake/perl5"; export PERL_MM_OPT;
