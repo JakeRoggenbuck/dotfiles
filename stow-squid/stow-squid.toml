@@ -17,8 +17,8 @@ deployed = "/home/jake/.tmux.conf"
 
 [[files]]
 name = "alacritty"
-origin = "/home/jake/Build/dotfiles/alacritty/alacritty.yml"
-deployed = "/home/jake/.config/alacritty/alacritty.yml"
+origin = "/home/jake/Build/dotfiles/alacritty/alacritty.toml"
+deployed = "/home/jake/.config/alacritty/alacritty.toml"
 
 [[files]]
 name = "bashrc"
