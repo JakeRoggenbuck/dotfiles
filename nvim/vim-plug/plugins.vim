@@ -14,10 +14,22 @@ Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-crystal/vim-crystal'
 Plug 'ziglang/zig.vim'
-Plug 'jakwings/vim-pony'
+Plug 'dag/vim-fish'
+Plug 'evanleck/vim-svelte'
+Plug 'wuelnerdotexe/vim-astro'
+Plug 'kylelaker/riscv.vim'
+Plug 'elixir-editors/vim-elixir'
+
+Plug 'dbeniamine/cheat.sh-vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/rust-tools.nvim'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -30,8 +42,6 @@ Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'glepnir/lspsaga.nvim'
-
-Plug 'nvim-lua/completion-nvim'
 
 " Show issue with code
 Plug 'kyazdani42/nvim-web-devicons'
@@ -57,6 +67,7 @@ Plug 'junegunn/fzf'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'folke/todo-comments.nvim'
 
 Plug 'mhartington/formatter.nvim'
 
@@ -85,7 +96,7 @@ Plug 'alfredodeza/pytest.vim'
 
 Plug 'RRethy/vim-illuminate'
 
-Plug 'vhyrro/neorg'
+" Plug 'vhyrro/neorg'
 
 " Git
 " Really helpful for using git with vim, it has all the needed stuff
@@ -107,15 +118,19 @@ Plug 'mhinz/vim-startify'
 
 " 'Quickly writeup and save drafts for messaging apps in your favorite editor'
 " - draft.vim
-Plug 'jakeroggenbuck/draft.vim', {'branch': 'add-dragon'}
+Plug 'jakeroggenbuck/draft.vim'
+" Plug 'file:///home/jake/Repos/draft.vim'
+"
 Plug 'jakeroggenbuck/journal.vim'
+" Plug 'file:///home/jake/Repos/Journal.vim'
 
-" Wrting
+" Writing
 Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
 Plug 'dbmrq/vim-ditto'
 Plug 'preservim/vim-lexical'
 Plug 'preservim/vim-textobj-sentence'
+Plug 'file:///home/jake/Repos/betterwriting.vim'
 
 " Themes
 " My main theme
@@ -134,6 +149,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'roosta/srcery'
 Plug 'dracula/vim'
 Plug 'sainnhe/edge'
+Plug 'sainnhe/everforest'
 
 " Appearance
 " The bar at the bottom that make vim super useful and look really awesome
