@@ -1,19 +1,3 @@
-
-" Chill out if I am feeling chill
-let s:chill = 0
-
-func! g:IsChilling()
-	if s:chill
-		let s:chill = 0
-		colorscheme iceberg
-	else
-		let s:chill = 1
-		colorscheme edge
-	endif
-endfunc
-
-call g:IsChilling()
-
 " This is pretty interesting if you need to see all the colors that vim can
 " use. This is helpful when making or fixing vim color themes or plugins that
 " deal with colors. Will add ctermfg=232COLOR in every color
@@ -44,7 +28,7 @@ func! g:HighlightingHexToggle()
 
 	elseif g:highlightinghex == 1
 		let g:Hexokinase_highlighters = []
-		set termguicolors&
+		set termguicolors
 		call hexokinase#v2#scraper#off()
 		let g:highlightinghex = 0
 	endif
