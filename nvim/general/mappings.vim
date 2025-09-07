@@ -7,6 +7,10 @@ nnoremap <leader>J :m+<CR>==
 xnoremap <leader>K :m-2<CR>gv=gv
 xnoremap <leader>L :m'>+<CR>gv=gv
 
+" Cheat Sheet
+nnoremap <leader>cs :call CheatSheetCommand()<CR>
+nnoremap <leader>cc :call CheatSheetCursor()<CR>
+
 " New buffer
 nnoremap <leader>B :enew<CR>
 
@@ -47,6 +51,11 @@ nnoremap <leader>B :<C-u>call gitblame#echo()<CR>
 nmap <silent><leader>sn :silent !command dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next <CR>
 nmap <silent><leader>sb :silent !command dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous<CR>
 nmap <silent><leader>sp :silent !command dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause<CR>
+
+" Next, Back, and Play/Pause for any media player in firefox
+nmap <silent><leader>fn :silent !command dbus-send --print-reply --dest=$(qdbus \| grep MediaPlayer2 \| cut -d ' ' -f 2) /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next <CR>
+nmap <silent><leader>fb :silent !command dbus-send --print-reply --dest=$(qdbus \| grep MediaPlayer2 \| cut -d ' ' -f 2) /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous<CR>
+nmap <silent><leader>fp :silent !command dbus-send --print-reply --dest=$(qdbus \| grep MediaPlayer2 \| cut -d ' ' -f 2) /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause<CR>
 
 nmap <leader>ghp :call ViewGithubMarkdown()<CR>
 
