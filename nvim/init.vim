@@ -1,10 +1,11 @@
-"    _  __     _     
+"     _  __     _     
 "    / |/ /  __(_)_ _ 
 "   /    / |/ / /  ` \
 "  /_/|_/|___/_/_/_/_/
 "
 "	By Jake Roggenbuck
 "	http://link.jr0.org/nvim
+"
 
 let mapleader =","
 

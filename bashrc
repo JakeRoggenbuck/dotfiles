@@ -21,7 +21,7 @@ if [[ $PROFILE -eq $ANASTASIUS ]]; then
 	STARSHIP=0
 elif [[ $PROFILE -eq $LEV ]]; then
 	CHEAT_SHEET=0
-	ALIAS_SHOW=1
+	ALIAS_SHOW=0
 	SPELLING_SHOW=0
 	RUBY=0
 	FASD=1
@@ -95,9 +95,9 @@ ssh_added () {
 	AGENT_LEN=${#SSH_AGENT_STRING}
 
 	if [[ $AGENT_LEN -eq 28 ]]; then
-		echo -e "\e[01;31m*\e[m"
+		echo -e '\e[01;31m*\e[m'
 	else
-		echo -e "\e[01;32m*\e[m"
+		echo -e '\e[01;32m*\e[m'
 	fi
 }
 
@@ -146,7 +146,7 @@ show_status_if_segfault() {
 if [[ ${EUID} == 0 ]]; then
 	PS1='\[\e[00;00m\]\W\[$(git_color)\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-	PS1='\[$(ssh_added)\] \[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+	PS1='\[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
 fi
 
 export SCRIPTS="/home/jake/.scripts/"

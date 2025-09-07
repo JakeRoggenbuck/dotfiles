@@ -1,3 +1,4 @@
+## NORD DARK
 
 [bell]
 animation = "EaseOutExpo"
@@ -61,6 +62,71 @@ text = "CellForeground"
 [colors.vi_mode_cursor]
 cursor = "#d8dee9"
 text = "#2e3440"
+
+# -- end of theme
+
+## NORD LIGHT
+
+# [bell]
+# animation = "EaseOutExpo"
+# color = "0x000000"
+# duration = 0
+#
+# [colors]
+# draw_bold_text_with_bright_colors = true
+#
+# [colors.bright]
+# black = "#6a7389"
+# blue = "#4d6d94"
+# cyan = "#4b8995"
+# green = "#5f8556"
+# magenta = "#8d5d8c"
+# red = "#923e45"
+# white = "#2e3440"
+# yellow = "#9d783f"
+#
+# [colors.cursor]
+# cursor = "#4c566a"
+# text = "#eceff4"
+#
+# [colors.dim]
+# black = "#8b92a0"
+# blue = "#6c8aa8"
+# cyan = "#679fa6"
+# green = "#7aa36e"
+# magenta = "#9c769c"
+# red = "#a3575d"
+# white = "#4b5671"
+# yellow = "#b29161"
+#
+# [colors.normal]
+# black = "#d8dee9"
+# blue = "#4d6d94"
+# cyan = "#5a9aa7"
+# green = "#6d9a62"
+# magenta = "#9b6d9b"
+# red = "#a94f56"
+# white = "#2e3440"
+# yellow = "#b58342"
+#
+# [colors.primary]
+# background = "#eceff4"
+# dim_foreground = "#4c566a"
+# foreground = "#2e3440"
+#
+# [colors.search.matches]
+# background = "#5a9aa7"
+# foreground = "CellBackground"
+#
+# [colors.selection]
+# background = "#d8dee9"
+# text = "CellForeground"
+#
+# [colors.vi_mode_cursor]
+# cursor = "#4c566a"
+# text = "#eceff4"
+
+# -- end of theme
 
 [cursor]
 style = "Block"
