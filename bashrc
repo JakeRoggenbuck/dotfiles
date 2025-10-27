@@ -135,7 +135,10 @@ HISTFILESIZE=200000
 show_status_if_segfault() {
 	STATUS=$?
 	if [[ $STATUS -eq 139 ]]; then
-		echo -e '\e[01;31m :( \e[m'
+		echo -e '\e[01;31m SEGFAULT :( \e[m'
+	fi
+	if [[ $STATUS -eq 134 ]]; then
+		echo -e '\e[01;32m ABORT\e[m'
 	fi
 }
 
@@ -202,6 +205,9 @@ huh() {
 
 # autoignore by adamhutchings - https://github.com/adamhutchings/autoignore
 alias autoignore='python3 /home/jake/Build/autoignore/src/main.py'
+
+# Navigate to skratch dir
+alias skcd='cd ~/Repos/skratch'
 
 # list directories
 alias ls='exa'
