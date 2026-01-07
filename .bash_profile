@@ -21,6 +21,7 @@ bash ~/.bashrc
 
 
 # BEGIN opam configuration
+# https://github.com/ocaml/opam
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
