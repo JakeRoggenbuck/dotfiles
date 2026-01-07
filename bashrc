@@ -85,8 +85,8 @@ git_color () {
 	fi
 }
 
-ssh_added () {
-	# Show a "*" in green if an SSH key has been added
+ssh_added() {
+	# Show a "▲" in green if an SSH key has been added
 	# for use with git and show a red one if it's not added
 	# You can add a key with ssh-add
 
@@ -95,10 +95,30 @@ ssh_added () {
 	AGENT_LEN=${#SSH_AGENT_STRING}
 
 	if [[ $AGENT_LEN -eq 28 ]]; then
-		echo -e '\e[01;31m*\e[m'
+		echo -e ''
 	else
-		echo -e '\e[01;32m*\e[m'
+		echo -e ' \e[01;32m▲\e[m'
 	fi
+}
+
+# Shorthand for `ls *.ts | xargs -I {} <command> {}`
+runon() {
+	shopt -s nullglob
+	local files=($1)
+	shift
+	for f in "${files[@]}"; do
+		"$@" "$f"
+	done
+	shopt -u nullglob
+}
+
+# Run a command 5 times and collect the time data
+run5() {
+  local i
+  for i in {1..5}; do
+    echo "Run $i:"
+    time -p "$@"
+  done
 }
 
 get_greek_symbol () {
@@ -149,7 +169,7 @@ show_status_if_segfault() {
 if [[ ${EUID} == 0 ]]; then
 	PS1='\[\e[00;00m\]\W\[$(git_color)\]$(__git_ps1) \[\e[01;31m\]Λ\[\e[m\] '
 else
-	PS1='\[\e[00;00m\]\W\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
+	PS1='\[\e[00;00m\]\W$(ssh_added)\[$(show_status_if_segfault)$(git_color)\]$(__git_ps1) \[\e[01;32m\]λ\[\e[m\] '
 fi
 
 export SCRIPTS="/home/jake/.scripts/"

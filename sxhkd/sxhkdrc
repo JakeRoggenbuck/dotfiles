@@ -52,11 +52,11 @@ F7
 	bspc node -t fullscrean
 
 #audio
-F1
-	amixer set Master 0%
+# F1
+# 	amixer set Master 0%
 
-F2
-	bash $SCRIPTS/audio down
+# F2
+# 	bash $SCRIPTS/audio down
 
 #F3
 #	bash $SCRIPTS/audio up

@@ -13,12 +13,12 @@ bash $HOME/.scripts/startup bspwm
 
 bspc config border_width         4
  
-# bspc config focused_border_color "#3498db"
-# bspc config focused_border_color "#d35400"
-# bspc config focused_border_color "#7c27a0"
-bspc config focused_border_color "#239B56"
+# bspc config focused_border_color "#3498db" # blue
+# bspc config focused_border_color "#d35400" # orange
+bspc config focused_border_color "#7c27a0" # purple
+# bspc config focused_border_color "#239B56" # green
 
-bspc config window_gap           4
+bspc config window_gap           0
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
