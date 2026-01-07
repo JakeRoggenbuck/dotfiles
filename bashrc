@@ -5,9 +5,9 @@ ANASTASIUS=0
 LEV=1
 
 case "$(uname -n)" in
- "anastasius") PROFILE=$ANASTASIUS ;;
- "lev") PROFILE=$LEV ;;
- "occam") PROFILE=$LEV ;;
+"anastasius") PROFILE=$ANASTASIUS ;;
+"lev") PROFILE=$LEV ;;
+"occam") PROFILE=$LEV ;;
 esac
 
 export PROFILE=$PROFILE
@@ -26,7 +26,7 @@ elif [[ $PROFILE -eq $LEV ]]; then
 	RUBY=0
 	FASD=1
 	STARSHIP=0
-	
+
 	# Because 08 and 09 are octals but 03 and 04 are not
 	MONTH=$(date "+%m")
 	MONTH=10#${MONTH}
@@ -43,36 +43,34 @@ else
 	STARSHIP=0
 fi
 
-start_cheat_sheet () {
+start_cheat_sheet() {
 	cheat_sheet_startup print
 	(cheat_sheet_startup pull &)
 }
 
-
-start_spelling_show () {
+start_spelling_show() {
 	cat /home/jake/.local/share/spelling/spelling.txt
 }
 
-
-start_alias_show () {
+start_alias_show() {
 	bash_startup_cpp
 }
 
-start_ruby () {
+start_ruby() {
 	eval "$(rbenv init -)"
 }
 
-start_fasd () {
+start_fasd() {
 	eval "$(fasd --init auto)"
 }
 
 start_starship() {
-    eval "$(starship init bash)"
+	eval "$(starship init bash)"
 }
 
-git_color () {
+git_color() {
 	# Inspired by function from https://github.com/jishnusen/dots
-	local git_status="`git status 2>&1`"
+	local git_status="$(git status 2>&1)"
 	if [[ ! "$git_status" =~ not\ a\ git\ repo ]]; then
 		if [[ "$git_status" =~ Changes\ not\ staged\ for\ commit ]]; then
 			local color='\e[1;31m'
@@ -114,14 +112,14 @@ runon() {
 
 # Run a command 5 times and collect the time data
 run5() {
-  local i
-  for i in {1..5}; do
-    echo "Run $i:"
-    time -p "$@"
-  done
+	local i
+	for i in {1..5}; do
+		echo "Run $i:"
+		time -p "$@"
+	done
 }
 
-get_greek_symbol () {
+get_greek_symbol() {
 	echo "
 	Α α	alpha
 	Β β	beta
@@ -176,7 +174,7 @@ export SCRIPTS="/home/jake/.scripts/"
 export WALLPAPER="/home/jake/.config/wallpaper"
 
 if [[ ! -d $SCRIPTS ]]; then
-    echo "$SCRIPTS doesn't exist"
+	echo "$SCRIPTS doesn't exist"
 	echo "set the var to it's actual location if it does exist"
 fi
 
@@ -272,7 +270,7 @@ alias llve='echo "$(date),	$(history | tail -2 | head -1 | cut -c8-)" >> ~/Libra
 # list shell save
 alias lllve='cat ~/Library/sheLL-save.txt'
 
-# list each file with it's human readable size 
+# list each file with it's human readable size
 alias lt='ls --human-readable --size -1 -S --classify'
 # list files by last edited
 alias lastt='ls -t1l'
@@ -417,30 +415,33 @@ alias ytau="youtube-dl -x --audio-format mp3"
 alias rec="ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 -c:v libx264 -preset superfast -crf 18 out.mp4"
 
 if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0232323" #black
-    echo -en "\e]P82B2B2B" #darkgrey
-    echo -en "\e]P1D75F5F" #darkred
-    echo -en "\e]P9E33636" #red
-    echo -en "\e]P287AF5F" #darkgreen
-    echo -en "\e]PA98E34D" #green
-    echo -en "\e]P3D7AF87" #brown
-    echo -en "\e]PBFFD75F" #yellow
-    echo -en "\e]P48787AF" #darkblue
-    echo -en "\e]PC7373C9" #blue
-    echo -en "\e]P5BD53A5" #darkmagenta
-    echo -en "\e]PDD633B2" #magenta
-    echo -en "\e]P65FAFAF" #darkcyan
-    echo -en "\e]PE44C9C9" #cyan
-    echo -en "\e]P7E5E5E5" #lightgrey
-    echo -en "\e]PFFFFFFF" #white
-    clear #for background artifacting
+	echo -en "\e]P0232323" #black
+	echo -en "\e]P82B2B2B" #darkgrey
+	echo -en "\e]P1D75F5F" #darkred
+	echo -en "\e]P9E33636" #red
+	echo -en "\e]P287AF5F" #darkgreen
+	echo -en "\e]PA98E34D" #green
+	echo -en "\e]P3D7AF87" #brown
+	echo -en "\e]PBFFD75F" #yellow
+	echo -en "\e]P48787AF" #darkblue
+	echo -en "\e]PC7373C9" #blue
+	echo -en "\e]P5BD53A5" #darkmagenta
+	echo -en "\e]PDD633B2" #magenta
+	echo -en "\e]P65FAFAF" #darkcyan
+	echo -en "\e]PE44C9C9" #cyan
+	echo -en "\e]P7E5E5E5" #lightgrey
+	echo -en "\e]PFFFFFFF" #white
+	clear                  #for background artifacting
 fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 if [[ $CHEAT_SHEET -eq 1 ]]; then
-	if [[ $(which cheat_sheet_startup & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which cheat_sheet_startup &
+		>/dev/null 2>&1
+	) ]]; then
 		start_cheat_sheet
 	else
 		echo "Install cheat_sheet_startup and add it to your PATH"
@@ -448,7 +449,10 @@ if [[ $CHEAT_SHEET -eq 1 ]]; then
 fi
 
 if [[ $SPELLING_SHOW -eq 1 ]]; then
-	if [[ $(which cheat_sheet_startup & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which cheat_sheet_startup &
+		>/dev/null 2>&1
+	) ]]; then
 		start_spelling_show
 	else
 		echo "Install cheat_sheet_startup and add it to your PATH"
@@ -456,7 +460,10 @@ if [[ $SPELLING_SHOW -eq 1 ]]; then
 fi
 
 if [[ $SPOOKY -eq 1 ]]; then
-	if [[ $(which spookyfetch & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which spookyfetch &
+		>/dev/null 2>&1
+	) ]]; then
 		spookyfetch
 	else
 		echo "Install spookyfetch and add it to your PATH"
@@ -464,7 +471,10 @@ if [[ $SPOOKY -eq 1 ]]; then
 fi
 
 if [[ $ALIAS_SHOW -eq 1 ]]; then
-	if [[ $(which bash_startup_cpp & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which bash_startup_cpp &
+		>/dev/null 2>&1
+	) ]]; then
 		start_alias_show
 	else
 		echo "Install bash_startup_cpp and add it to your PATH"
@@ -472,19 +482,28 @@ if [[ $ALIAS_SHOW -eq 1 ]]; then
 fi
 
 if [[ $RUBY -eq 1 ]]; then
-	if [[ $(which rbenv & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which rbenv &
+		>/dev/null 2>&1
+	) ]]; then
 		start_ruby
 	fi
 fi
 
 if [[ $FASD -eq 1 ]]; then
-	if [[ $(which fasd & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which fasd &
+		>/dev/null 2>&1
+	) ]]; then
 		start_fasd
 	fi
 fi
 
 if [[ $STARSHIP -eq 1 ]]; then
-	if [[ $(which starship & >/dev/null 2>&1) ]]; then
+	if [[ $(
+		which starship &
+		>/dev/null 2>&1
+	) ]]; then
 		start_starship
 	fi
 fi
@@ -493,8 +512,13 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-PATH="/home/jake/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/jake/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/jake/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/jake/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/jake/perl5"; export PERL_MM_OPT;
+PATH="/home/jake/perl5/bin${PATH:+:${PATH}}"
+export PATH
+PERL5LIB="/home/jake/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL5LIB
+PERL_LOCAL_LIB_ROOT="/home/jake/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"/home/jake/perl5\""
+export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/home/jake/perl5"
+export PERL_MM_OPT
