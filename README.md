@@ -1,4 +1,7 @@
 # dotfiles
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/723aa9e0-21b2-4fac-acb0-c17c1337c87a" />
+
 - A collection of my dotfiles that I use on my GNU/Linux machine
   - Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop).
   - I also used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine
