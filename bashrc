@@ -4,6 +4,7 @@
 ANASTASIUS=0
 LEV=1
 
+# TODO: I don't use these anymore, so I can either remove it or make a more robust version
 case "$(uname -n)" in
 "anastasius") PROFILE=$ANASTASIUS ;;
 "lev") PROFILE=$LEV ;;
@@ -68,6 +69,28 @@ start_starship() {
 	eval "$(starship init bash)"
 }
 
+jr () {
+	echo "Jake's Resources"
+
+	echo "bun create vite"
+
+	echo "bun install tailwindcss @tailwindcss/vite"
+
+	echo "import tailwindcss from '@tailwindcss/vite'"
+
+	echo "Add tailwindcss() to plugins"
+
+	echo "Add @import "tailwindcss"; to the index.css"
+
+	echo "from fastapi import FastAPI"
+
+	echo "app = FastAPI()"
+
+	echo "import uvicorn"
+
+	echo "uvicorn.run(app, host='0.0.0.0', port=8000)"
+}
+
 git_color() {
 	# Inspired by function from https://github.com/jishnusen/dots
 	local git_status="$(git status 2>&1)"
@@ -87,6 +110,7 @@ ssh_added() {
 	# Show a "▲" in green if an SSH key has been added
 	# for use with git and show a red one if it's not added
 	# You can add a key with ssh-add
+	STATUS=$?
 
 	SSH_AGENT_STRING="$(ssh-add -L)"
 	# 28 if no agent added
@@ -97,6 +121,7 @@ ssh_added() {
 	else
 		echo -e ' \e[01;32m▲\e[m'
 	fi
+	exit $STATUS
 }
 
 # Shorthand for `ls *.ts | xargs -I {} <command> {}`
@@ -152,8 +177,9 @@ HISTFILESIZE=200000
 
 show_status_if_segfault() {
 	STATUS=$?
+
 	if [[ $STATUS -eq 139 ]]; then
-		echo -e '\e[01;31m SEGFAULT :( \e[m'
+		echo -e '\e[01;31m SEGFAULT :(\e[m'
 	fi
 	if [[ $STATUS -eq 134 ]]; then
 		echo -e '\e[01;32m ABORT\e[m'
@@ -227,7 +253,7 @@ alias autoignore='python3 /home/jake/Build/autoignore/src/main.py'
 # Navigate to skratch dir
 alias skcd='cd ~/Repos/skratch'
 
-# list directories
+# list directories -- TODO: I think exa isn't maintained anymore
 alias ls='exa'
 # search contents of files
 alias grep='grep --colour=auto'
@@ -412,7 +438,18 @@ alias count="find . -type f | wc -l"
 # download youtube audio from youtube-dl
 alias ytau="youtube-dl -x --audio-format mp3"
 
+# Use ffmpeg to record a video
 alias rec="ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 -c:v libx264 -preset superfast -crf 18 out.mp4"
+
+# Get the path of the most recently created thing in downloads
+alias dpath='echo "$(ls -snew --absolute ~/Downloads | tail -n1)"'
+
+# Copy the most recently created file from downloads into the current working dir
+dcopy() {
+	set -x
+	cp "$(dpath)" .
+	set +x
+}
 
 if [ "$TERM" = "linux" ]; then
 	echo -en "\e]P0232323" #black
@@ -522,3 +559,6 @@ PERL_MB_OPT="--install_base \"/home/jake/perl5\""
 export PERL_MB_OPT
 PERL_MM_OPT="INSTALL_BASE=/home/jake/perl5"
 export PERL_MM_OPT
+
+# AL
+export PATH="$HOME/.al/bin:$PATH"
