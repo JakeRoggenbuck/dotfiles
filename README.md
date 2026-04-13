@@ -1,17 +1,15 @@
 # dotfiles
 
+A collection of my dotfiles that I use on my GNU/Linux machine. Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop). I also previously used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine.
+
+<img width="1919" height="1079" alt="2026-04-12_23-57" src="https://github.com/user-attachments/assets/2067c7cc-c960-479f-94f2-6852c56af8c5" />
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/723aa9e0-21b2-4fac-acb0-c17c1337c87a" />
 
-- A collection of my dotfiles that I use on my GNU/Linux machine
-  - Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop).
-  - I also used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine
-
 # Tools
-- I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-squid) to manage the updating and deplying of my dotfiles
-  - The config for that can be found also in the repo [here](https://github.com/JakeRoggenbuck/dotfiles/tree/master/stow-squid)
+
+I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-squid) to manage the updating and deplying of my dotfiles. The config for that can be found also in [that repo](https://github.com/JakeRoggenbuck/dotfiles/tree/master/stow-squid).
 
 ![image](https://user-images.githubusercontent.com/35516367/199395800-29168c49-4f88-4224-ac68-ae718b251921.png)
-
 ![image](https://user-images.githubusercontent.com/35516367/165446679-a182aad1-f967-4f03-9214-4ae620bf20e5.png)
 
 # Configs
