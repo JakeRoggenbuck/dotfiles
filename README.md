@@ -21,6 +21,20 @@ I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-s
 </table>
 
 # Configs
+
+| Config                  | Description                   |
+|-------------------------|-------------------------------|
+| [alacritty](alacritty/) | Terminal emulator             |
+| [bashrc](bashrc)        | Bash shell configuration      |
+| [bspwm](bspwm/)         | Tiling window manager (Linux) |
+| [dunst](dunst/)         | Notification daemon           |
+| [grub](grub)            | GRUB bootloader config        |
+| [nvim](nvim/)           | Neovim editor                 |
+| [picom](picom/)         | Compositor                    |
+| [polybar](polybar/)     | Status bar                    |
+| [rofi](rofi/)           | Application launcher          |
+| [sxhkd](sxhkd/)         | Hotkey daemon (Linux)         |
+
 ## Nvim, Tmux, Alacritty
 <table>
 <tr>
