@@ -7,14 +7,22 @@ func! g:IsChilling()
 		colorscheme iceberg
 	else
 		let s:chill = 1
-		" let g:gruvbox_contrast_light = "soft"
 		" set background = "light"
 		"
+		let g:everforest_background = 'hard'
 		colorscheme everforest
+
+		if has('termguicolors')
+			set termguicolors
+		endif
+
 		" colorscheme nord
 		" colorscheme iceberg
 		" colorscheme onedark
+		"
 		" colorscheme gruvbox
+		" let g:gruvbox_contrast_light = "soft"
+		"
 		" colorscheme bubblegum-256-light
 	endif
 endfunc
