@@ -1,6 +1,6 @@
 # dotfiles
 
-A collection of my dotfiles that I use on my GNU/Linux machine. Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop). I also previously used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine.
+A collection of my dotfiles that I use on my GNU/Linux machine. Both Arch (current Laptop and Desktop) and Ubuntu (Old Desktop). You can find my wallpapers in the [.wallpaper](https://github.com/JakeRoggenbuck/.wallpaper) repo.
 
 <table>
 <tr>
@@ -9,7 +9,7 @@ A collection of my dotfiles that I use on my GNU/Linux machine. Both Arch (curre
 </tr>
 </table>
 
-# Tools
+## Tools
 
 I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-squid) to manage the updating and deplying of my dotfiles. The config for that can be found also in [that repo](https://github.com/JakeRoggenbuck/dotfiles/tree/master/stow-squid).
 
@@ -20,7 +20,7 @@ I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-s
 </tr>
 </table>
 
-# Configs
+## Configs
 
 | Config                  | Description                   |
 |-------------------------|-------------------------------|
@@ -35,7 +35,8 @@ I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-s
 | [rofi](rofi/)           | Application launcher          |
 | [sxhkd](sxhkd/)         | Hotkey daemon (Linux)         |
 
-## Nvim, Tmux, Alacritty
+#### Nvim, Tmux, Alacritty
+
 <table>
 <tr>
 <td><img alt="image" src="https://user-images.githubusercontent.com/35516367/131428130-f3dae3f1-6bca-4b08-93e0-8d8ef3e42031.png" /></td>
@@ -43,7 +44,8 @@ I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-s
 </tr>
 </table>
 
-## Bspwm, Sxhkd, Skhd, Yabai (Window managers and keybinds)
+#### Bspwm, Sxhkd, Skhd, Yabai (Window managers and keybinds)
+
 <table>
 <tr>
 <td><img alt="image" src="https://user-images.githubusercontent.com/35516367/131428915-13f2f0ad-0e47-4109-8f1f-53e7bfb75bbb.png" /></td>
@@ -52,3 +54,7 @@ I use a tool I made called [stow-squid](https://github.com/JakeRoggenbuck/stow-s
 <td><img alt="image" src="https://user-images.githubusercontent.com/35516367/131429061-5ab13885-29ed-4e7f-ad1a-7c01f5b2b20c.png" /></td>
 </tr>
 </table>
+
+## Older stuff
+
+I also previously used some of these dotfiles on MacOS, and exclusivly used [yabai](https://github.com/JakeRoggenbuck/dotfiles/tree/master/yabai) and [skhd](https://github.com/JakeRoggenbuck/dotfiles/tree/master/skhd) on that machine. 
